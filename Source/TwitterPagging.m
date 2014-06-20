@@ -8,7 +8,25 @@
 
 #import "TwitterPagging.h"
 
+@interface TwitterPagging ()
+
+@property (nonatomic, assign) NSInteger currentPage;
+
+@end
+
 @implementation TwitterPagging
+
+#pragma DataSource
+
+- (NSInteger)getCurrentPageIndex {
+    return self.currentPage;
+}
+
+- (void)reloadData {
+    
+}
+
+#pragma mark - Life Cycle
 
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -16,6 +34,12 @@
         // Initialization code
     }
     return self;
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    if (newSuperview) {
+        [self reloadData];
+    }
 }
 
 @end
