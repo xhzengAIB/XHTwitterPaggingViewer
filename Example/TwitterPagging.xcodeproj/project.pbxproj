@@ -19,6 +19,7 @@
 		AB166D8C1954EB9F007FF9FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB166D741954EB9E007FF9FF /* UIKit.framework */; };
 		AB166D941954EB9F007FF9FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB166D921954EB9F007FF9FF /* InfoPlist.strings */; };
 		AB166D961954EB9F007FF9FF /* TwitterPaggingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB166D951954EB9F007FF9FF /* TwitterPaggingTests.m */; };
+		AB166DA21954EC6C007FF9FF /* TwitterPagging.m in Sources */ = {isa = PBXBuildFile; fileRef = AB166DA11954EC6C007FF9FF /* TwitterPagging.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		AB166D911954EB9F007FF9FF /* TwitterPaggingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TwitterPaggingTests-Info.plist"; sourceTree = "<group>"; };
 		AB166D931954EB9F007FF9FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AB166D951954EB9F007FF9FF /* TwitterPaggingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwitterPaggingTests.m; sourceTree = "<group>"; };
+		AB166DA01954EC6C007FF9FF /* TwitterPagging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterPagging.h; sourceTree = "<group>"; };
+		AB166DA11954EC6C007FF9FF /* TwitterPagging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterPagging.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,7 @@
 		AB166D641954EB9E007FF9FF = {
 			isa = PBXGroup;
 			children = (
+				AB166D9F1954EC59007FF9FF /* Source */,
 				AB166D761954EB9E007FF9FF /* TwitterPagging */,
 				AB166D8F1954EB9F007FF9FF /* TwitterPaggingTests */,
 				AB166D6F1954EB9E007FF9FF /* Frameworks */,
@@ -142,6 +146,16 @@
 				AB166D921954EB9F007FF9FF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AB166D9F1954EC59007FF9FF /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				AB166DA01954EC6C007FF9FF /* TwitterPagging.h */,
+				AB166DA11954EC6C007FF9FF /* TwitterPagging.m */,
+			);
+			name = Source;
+			path = ../Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB166D811954EB9E007FF9FF /* AppDelegate.m in Sources */,
+				AB166DA21954EC6C007FF9FF /* TwitterPagging.m in Sources */,
 				AB166D7D1954EB9E007FF9FF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,6 +454,7 @@
 				AB166D9B1954EB9F007FF9FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AB166D9C1954EB9F007FF9FF /* Build configuration list for PBXNativeTarget "TwitterPaggingTests" */ = {
 			isa = XCConfigurationList;
@@ -447,6 +463,7 @@
 				AB166D9E1954EB9F007FF9FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
