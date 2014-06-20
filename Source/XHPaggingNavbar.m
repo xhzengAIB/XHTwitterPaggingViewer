@@ -14,6 +14,18 @@
 
 @implementation XHPaggingNavbar
 
+- (void)setCurrentPage:(NSInteger)currentPage {
+    _currentPage = currentPage;
+}
+
+- (void)setContentOffset:(CGPoint)contentOffset {
+    _contentOffset = contentOffset;
+}
+
+- (void)reloadData {
+    
+}
+
 #pragma mark - Life Cycle
 
 - (id)initWithFrame:(CGRect)frame {

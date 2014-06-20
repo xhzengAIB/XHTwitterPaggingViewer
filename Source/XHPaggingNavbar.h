@@ -10,4 +10,12 @@
 
 @interface XHPaggingNavbar : UIView
 
+@property (nonatomic, strong) NSArray *titles;
+
+@property (nonatomic, assign) NSInteger currentPage;
+
+@property (nonatomic, assign) CGPoint contentOffset;
+
+- (void)reloadData;
+
 @end

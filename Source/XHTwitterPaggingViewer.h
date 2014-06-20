@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^XHDidChangedPageBlock)(NSInteger currentPage);
+
 @interface XHTwitterPaggingViewer : UIViewController
 
-- (instancetype)initWithPageItems:(NSArray *)pageItems;
+@property (nonatomic, copy) XHDidChangedPageBlock didChangedPageCompleted;
+
+@property (nonatomic, strong) NSArray *viewControllers;
+
+- (NSInteger)getCurrentPageIndex;
+
+- (void)reloadData;
 
 @end
