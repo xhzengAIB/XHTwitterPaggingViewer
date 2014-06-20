@@ -1,5 +1,5 @@
 //
-//  XHTwitterPagging.h
+//  XHTwitterPaggingView.h
 //  XHTwitterPagging
 //
 //  Created by 曾 宪华 on 14-6-20.
@@ -10,7 +10,7 @@
 
 typedef void(^XHDidChangedPageBlock)(NSInteger currentPage);
 
-@interface XHTwitterPagging : UIView
+@interface XHTwitterPaggingView : UIView
 
 @property (nonatomic, copy) XHDidChangedPageBlock didChangedPageCompleted;
 

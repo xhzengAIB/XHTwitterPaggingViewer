@@ -19,8 +19,10 @@
 		AB166D8C1954EB9F007FF9FF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB166D741954EB9E007FF9FF /* UIKit.framework */; };
 		AB166D941954EB9F007FF9FF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AB166D921954EB9F007FF9FF /* InfoPlist.strings */; };
 		AB166D961954EB9F007FF9FF /* TwitterPaggingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB166D951954EB9F007FF9FF /* TwitterPaggingTests.m */; };
-		AB166DA21954EC6C007FF9FF /* XHTwitterPagging.m in Sources */ = {isa = PBXBuildFile; fileRef = AB166DA11954EC6C007FF9FF /* XHTwitterPagging.m */; };
+		AB166DA21954EC6C007FF9FF /* XHTwitterPaggingView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB166DA11954EC6C007FF9FF /* XHTwitterPaggingView.m */; };
 		AB166DA51954EE28007FF9FF /* XHPaggingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AB166DA41954EE28007FF9FF /* XHPaggingNavbar.m */; };
+		AB166DA81954EF45007FF9FF /* XHTwitterPaggingViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = AB166DA71954EF45007FF9FF /* XHTwitterPaggingViewer.m */; };
+		AB166DAB1954EFAF007FF9FF /* XHPageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = AB166DAA1954EFAF007FF9FF /* XHPageItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,10 +52,14 @@
 		AB166D911954EB9F007FF9FF /* TwitterPaggingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TwitterPaggingTests-Info.plist"; sourceTree = "<group>"; };
 		AB166D931954EB9F007FF9FF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		AB166D951954EB9F007FF9FF /* TwitterPaggingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwitterPaggingTests.m; sourceTree = "<group>"; };
-		AB166DA01954EC6C007FF9FF /* XHTwitterPagging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTwitterPagging.h; sourceTree = "<group>"; };
-		AB166DA11954EC6C007FF9FF /* XHTwitterPagging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTwitterPagging.m; sourceTree = "<group>"; };
+		AB166DA01954EC6C007FF9FF /* XHTwitterPaggingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTwitterPaggingView.h; sourceTree = "<group>"; };
+		AB166DA11954EC6C007FF9FF /* XHTwitterPaggingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTwitterPaggingView.m; sourceTree = "<group>"; };
 		AB166DA31954EE28007FF9FF /* XHPaggingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHPaggingNavbar.h; sourceTree = "<group>"; };
 		AB166DA41954EE28007FF9FF /* XHPaggingNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHPaggingNavbar.m; sourceTree = "<group>"; };
+		AB166DA61954EF45007FF9FF /* XHTwitterPaggingViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTwitterPaggingViewer.h; sourceTree = "<group>"; };
+		AB166DA71954EF45007FF9FF /* XHTwitterPaggingViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTwitterPaggingViewer.m; sourceTree = "<group>"; };
+		AB166DA91954EFAF007FF9FF /* XHPageItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHPageItem.h; sourceTree = "<group>"; };
+		AB166DAA1954EFAF007FF9FF /* XHPageItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHPageItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,8 +160,12 @@
 		AB166D9F1954EC59007FF9FF /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				AB166DA01954EC6C007FF9FF /* XHTwitterPagging.h */,
-				AB166DA11954EC6C007FF9FF /* XHTwitterPagging.m */,
+				AB166DA61954EF45007FF9FF /* XHTwitterPaggingViewer.h */,
+				AB166DA71954EF45007FF9FF /* XHTwitterPaggingViewer.m */,
+				AB166DA91954EFAF007FF9FF /* XHPageItem.h */,
+				AB166DAA1954EFAF007FF9FF /* XHPageItem.m */,
+				AB166DA01954EC6C007FF9FF /* XHTwitterPaggingView.h */,
+				AB166DA11954EC6C007FF9FF /* XHTwitterPaggingView.m */,
 				AB166DA31954EE28007FF9FF /* XHPaggingNavbar.h */,
 				AB166DA41954EE28007FF9FF /* XHPaggingNavbar.m */,
 			);
@@ -260,7 +270,9 @@
 			files = (
 				AB166D811954EB9E007FF9FF /* AppDelegate.m in Sources */,
 				AB166DA51954EE28007FF9FF /* XHPaggingNavbar.m in Sources */,
-				AB166DA21954EC6C007FF9FF /* XHTwitterPagging.m in Sources */,
+				AB166DA81954EF45007FF9FF /* XHTwitterPaggingViewer.m in Sources */,
+				AB166DAB1954EFAF007FF9FF /* XHPageItem.m in Sources */,
+				AB166DA21954EC6C007FF9FF /* XHTwitterPaggingView.m in Sources */,
 				AB166D7D1954EB9E007FF9FF /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
