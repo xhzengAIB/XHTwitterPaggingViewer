@@ -1,22 +1,22 @@
 //
-//  TwitterPagging.m
-//  TwitterPagging
+//  XHTwitterPagging.m
+//  XHTwitterPagging
 //
 //  Created by 曾 宪华 on 14-6-20.
 //  Copyright (c) 2014年 曾宪华 QQ群: (142557668) QQ:543413507  Gmail:xhzengAIB@gmail.com. All rights reserved.
 //
 
-#import "TwitterPagging.h"
+#import "XHTwitterPagging.h"
 
-@interface TwitterPagging ()
+@interface XHTwitterPagging ()
 
 @property (nonatomic, assign) NSInteger currentPage;
 
 @end
 
-@implementation TwitterPagging
+@implementation XHTwitterPagging
 
-#pragma DataSource
+#pragma mark - DataSource
 
 - (NSInteger)getCurrentPageIndex {
     return self.currentPage;
