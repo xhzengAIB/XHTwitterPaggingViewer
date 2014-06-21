@@ -14,17 +14,22 @@
 
 @implementation XHTableViewController
 
+- (void)loadDataSource {
+    self.dataSource = (NSMutableArray *)@[@"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo"];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.dataSource = (NSMutableArray *)@[@"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo"];
+    [self loadDataSource];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     UIEdgeInsets edgeInsets = self.tableView.contentInset;
-    edgeInsets.top = 64;
+    edgeInsets.top = ([XHFoundationCommon isIOS7] ? 64 : 0);
     self.tableView.contentInset = edgeInsets;
+    self.tableView.scrollIndicatorInsets = edgeInsets;
 }
 
 - (void)didReceiveMemoryWarning {

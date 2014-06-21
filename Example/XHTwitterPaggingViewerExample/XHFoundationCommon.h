@@ -10,6 +10,8 @@
 
 @interface XHFoundationCommon : NSObject
 
++ (BOOL)isIOS7;
+
 + (CGFloat)getAdapterHeight;
 
 @end

@@ -8,8 +8,6 @@
 
 #import "XHBaseTableViewController.h"
 
-#import "XHFoundationCommon.h"
-
 @interface XHBaseTableViewController ()
 
 /**
