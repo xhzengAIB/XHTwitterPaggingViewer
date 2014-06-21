@@ -89,13 +89,14 @@
     
     if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
         [self setAutomaticallyAdjustsScrollViewInsets:NO];
+        [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.291 green:0.607 blue:1.000 alpha:1.000]];
     }
     
     self.navigationItem.titleView = self.paggingNavbar;
     
     [self.view addSubview:self.paggingScrollView];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonItemStyleDone target:nil action:nil];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:nil action:nil];
 }
 
 - (void)didReceiveMemoryWarning {

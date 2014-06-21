@@ -21,7 +21,9 @@
 		AB166D961954EB9F007FF9FF /* TwitterPaggingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB166D951954EB9F007FF9FF /* TwitterPaggingTests.m */; };
 		AB166DA51954EE28007FF9FF /* XHPaggingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AB166DA41954EE28007FF9FF /* XHPaggingNavbar.m */; };
 		AB166DA81954EF45007FF9FF /* XHTwitterPaggingViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = AB166DA71954EF45007FF9FF /* XHTwitterPaggingViewer.m */; };
-		AB166DAE1954FE8C007FF9FF /* XHDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB166DAD1954FE8C007FF9FF /* XHDemoViewController.m */; };
+		ABBC69B919550E3700A3D6A6 /* XHTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBC69B819550E3700A3D6A6 /* XHTableViewController.m */; };
+		ABBC69BE19550E5600A3D6A6 /* XHFoundationCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBC69BB19550E5600A3D6A6 /* XHFoundationCommon.m */; };
+		ABBC69BF19550E5600A3D6A6 /* XHBaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBC69BD19550E5600A3D6A6 /* XHBaseTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +57,12 @@
 		AB166DA41954EE28007FF9FF /* XHPaggingNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHPaggingNavbar.m; sourceTree = "<group>"; };
 		AB166DA61954EF45007FF9FF /* XHTwitterPaggingViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTwitterPaggingViewer.h; sourceTree = "<group>"; };
 		AB166DA71954EF45007FF9FF /* XHTwitterPaggingViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTwitterPaggingViewer.m; sourceTree = "<group>"; };
-		AB166DAC1954FE8C007FF9FF /* XHDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDemoViewController.h; sourceTree = "<group>"; };
-		AB166DAD1954FE8C007FF9FF /* XHDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDemoViewController.m; sourceTree = "<group>"; };
+		ABBC69B719550E3700A3D6A6 /* XHTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTableViewController.h; sourceTree = "<group>"; };
+		ABBC69B819550E3700A3D6A6 /* XHTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTableViewController.m; sourceTree = "<group>"; };
+		ABBC69BA19550E5600A3D6A6 /* XHFoundationCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHFoundationCommon.h; sourceTree = "<group>"; };
+		ABBC69BB19550E5600A3D6A6 /* XHFoundationCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHFoundationCommon.m; sourceTree = "<group>"; };
+		ABBC69BC19550E5600A3D6A6 /* XHBaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHBaseTableViewController.h; sourceTree = "<group>"; };
+		ABBC69BD19550E5600A3D6A6 /* XHBaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHBaseTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +125,12 @@
 			children = (
 				AB166D7F1954EB9E007FF9FF /* AppDelegate.h */,
 				AB166D801954EB9E007FF9FF /* AppDelegate.m */,
-				AB166DAC1954FE8C007FF9FF /* XHDemoViewController.h */,
-				AB166DAD1954FE8C007FF9FF /* XHDemoViewController.m */,
+				ABBC69BA19550E5600A3D6A6 /* XHFoundationCommon.h */,
+				ABBC69BB19550E5600A3D6A6 /* XHFoundationCommon.m */,
+				ABBC69BC19550E5600A3D6A6 /* XHBaseTableViewController.h */,
+				ABBC69BD19550E5600A3D6A6 /* XHBaseTableViewController.m */,
+				ABBC69B719550E3700A3D6A6 /* XHTableViewController.h */,
+				ABBC69B819550E3700A3D6A6 /* XHTableViewController.m */,
 				AB166D821954EB9E007FF9FF /* Images.xcassets */,
 				AB166D771954EB9E007FF9FF /* Supporting Files */,
 			);
@@ -263,11 +273,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB166DAE1954FE8C007FF9FF /* XHDemoViewController.m in Sources */,
+				ABBC69BF19550E5600A3D6A6 /* XHBaseTableViewController.m in Sources */,
 				AB166D811954EB9E007FF9FF /* AppDelegate.m in Sources */,
+				ABBC69BE19550E5600A3D6A6 /* XHFoundationCommon.m in Sources */,
 				AB166DA51954EE28007FF9FF /* XHPaggingNavbar.m in Sources */,
 				AB166DA81954EF45007FF9FF /* XHTwitterPaggingViewer.m in Sources */,
 				AB166D7D1954EB9E007FF9FF /* main.m in Sources */,
+				ABBC69B919550E3700A3D6A6 /* XHTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

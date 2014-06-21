@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "XHTwitterPaggingViewer.h"
-#import "XHDemoViewController.h"
+#import "XHTableViewController.h"
 
 @implementation AppDelegate
 
@@ -21,19 +21,16 @@
     
     XHTwitterPaggingViewer *twitterPaggingViewer = [[XHTwitterPaggingViewer alloc] init];
     
-    XHDemoViewController *demoViewController1 = [[XHDemoViewController alloc] init];
+    XHTableViewController *demoViewController1 = [[XHTableViewController alloc] init];
     demoViewController1.title = @"Home";
-    demoViewController1.backColor = [UIColor grayColor];
     
-    XHDemoViewController *demoViewController2 = [[XHDemoViewController alloc] init];
-    demoViewController2.title = @"Friend";
-    demoViewController2.backColor = [UIColor redColor];
+    XHTableViewController *tableViewController = [[XHTableViewController alloc] init];
+    tableViewController.title = @"Friend";
 
-    XHDemoViewController *demoViewController3 = [[XHDemoViewController alloc] init];
+    XHTableViewController *demoViewController3 = [[XHTableViewController alloc] init];
     demoViewController3.title = @"News";
-    demoViewController3.backColor = [UIColor blueColor];
     
-    twitterPaggingViewer.viewControllers = @[demoViewController1, demoViewController2, demoViewController3];
+    twitterPaggingViewer.viewControllers = @[demoViewController1, tableViewController, demoViewController3];
     
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:twitterPaggingViewer];
     
