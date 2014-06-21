@@ -38,14 +38,7 @@
         CGRect contentViewFrame = viewController.view.frame;
         contentViewFrame.origin.x = index * CGRectGetWidth(self.view.bounds);
         viewController.view.frame = contentViewFrame;
-        if (self.currentPage == index) {
-            [viewController willMoveToParentViewController:self];
-            [self.paggingScrollView addSubview:viewController.view];
-            [viewController didMoveToParentViewController:self];
-            
-        } else {
-            [self.paggingScrollView addSubview:viewController.view];
-        }
+        [self.paggingScrollView addSubview:viewController.view];
         [self addChildViewController:viewController];
     }
     
@@ -77,10 +70,19 @@
     return _paggingNavbar;
 }
 
+- (UIViewController *)getPageViewControllerAtIndex:(NSInteger)index {
+    if (index < self.viewControllers.count) {
+        return self.viewControllers[index];
+    } else {
+        return nil;
+    }
+}
+
 #pragma mark - Life Cycle
 
-- (void)viewWillLayoutSubviews {
-    [self reloadData];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
 }
 
 - (void)viewDidLoad {
@@ -96,7 +98,8 @@
     
     [self.view addSubview:self.paggingScrollView];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:nil action:nil];
+    [self reloadData];
+    [self setupScrollToTop];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -106,6 +109,15 @@
 
 - (void)dealloc {
     
+}
+
+- (UIView *)subviewWithClass:(Class)cuurentClass onView:(UIView *)view {
+    for (UIView *subView in view.subviews) {
+        if ([subView isKindOfClass:cuurentClass]) {
+            return subView;
+        }
+    }
+    return nil;
 }
 
 #pragma mark - UIScrollView Delegate
@@ -122,6 +134,21 @@
     self.currentPage = floor((scrollView.contentOffset.x - pageWidth/ 2) / pageWidth)+ 1;
     
     self.paggingNavbar.currentPage = self.currentPage;
+    
+    [self setupScrollToTop];
+}
+
+- (void)setupScrollToTop {
+    for (int i = 0; i < self.viewControllers.count; i ++) {
+        UITableView *tableView = (UITableView *)[self subviewWithClass:[UITableView class] onView:[self getPageViewControllerAtIndex:i].view];
+        if (tableView) {
+            if (self.currentPage == i) {
+                [tableView setScrollsToTop:YES];
+            } else {
+                [tableView setScrollsToTop:NO];
+            }
+        }
+    }
 }
 
 @end

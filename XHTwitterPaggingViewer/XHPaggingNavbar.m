@@ -77,8 +77,10 @@
             [self addSubview:titleLabel];
             [self.titleLabels addObject:titleLabel];
         }
+        titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        titleLabel.font = [UIFont boldSystemFontOfSize:17];
         titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.textColor = [UIColor blackColor];
+        titleLabel.textColor = [UIColor whiteColor];
         titleLabel.text = title;
         titleLabel.frame = titleLabelFrame;
         if (self.currentPage == index) {
@@ -96,12 +98,12 @@
 - (UIPageControl *)pageControl {
     if (!_pageControl) {
         _pageControl = [[UIPageControl alloc] init];
-        _pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        _pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         _pageControl.frame = (CGRect){0, 35, CGRectGetWidth(self.bounds), 0};
         _pageControl.hidesForSinglePage = YES;
         _pageControl.currentPage = self.currentPage;
         _pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
-        _pageControl.pageIndicatorTintColor = [UIColor colorWithWhite:0.400 alpha:1.000];
+        _pageControl.pageIndicatorTintColor = [UIColor colorWithWhite:0.799 alpha:1.000];
     }
     return _pageControl;
 }
@@ -119,6 +121,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self addSubview:self.pageControl];
     }
     return self;

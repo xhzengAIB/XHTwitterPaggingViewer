@@ -48,6 +48,7 @@
         _tableView = [[UITableView alloc] initWithFrame:tableViewFrame style:self.tableViewStyle];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        [_tableView setScrollsToTop:NO];
         
         _tableView.tableFooterView = [[UIView alloc] init];
         if (![self validateSeparatorInset]) {
