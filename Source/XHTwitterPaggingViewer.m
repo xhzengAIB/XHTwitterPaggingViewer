@@ -35,6 +35,9 @@
     
     for (UIViewController *viewController in self.viewControllers) {
         NSInteger index = [self.viewControllers indexOfObject:viewController];
+        CGRect contentViewFrame = viewController.view.frame;
+        contentViewFrame.origin.x = index * CGRectGetWidth(self.view.bounds);
+        viewController.view.frame = contentViewFrame;
         if (self.currentPage == index) {
             [viewController willMoveToParentViewController:self];
             [self.paggingScrollView addSubview:viewController.view];
@@ -57,6 +60,8 @@
 - (UIScrollView *)paggingScrollView {
     if (!_paggingScrollView) {
         _paggingScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+        _paggingScrollView.bounces = NO;
+        _paggingScrollView.pagingEnabled = YES;
         [_paggingScrollView setScrollsToTop:NO];
         _paggingScrollView.delegate = self;
         _paggingScrollView.showsVerticalScrollIndicator = NO;
@@ -74,6 +79,10 @@
 
 #pragma mark - Life Cycle
 
+- (void)viewWillLayoutSubviews {
+    [self reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -83,6 +92,10 @@
     }
     
     self.navigationItem.titleView = self.paggingNavbar;
+    
+    [self.view addSubview:self.paggingScrollView];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonItemStyleDone target:nil action:nil];
 }
 
 - (void)didReceiveMemoryWarning {

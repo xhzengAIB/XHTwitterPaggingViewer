@@ -21,6 +21,7 @@
 		AB166D961954EB9F007FF9FF /* TwitterPaggingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB166D951954EB9F007FF9FF /* TwitterPaggingTests.m */; };
 		AB166DA51954EE28007FF9FF /* XHPaggingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = AB166DA41954EE28007FF9FF /* XHPaggingNavbar.m */; };
 		AB166DA81954EF45007FF9FF /* XHTwitterPaggingViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = AB166DA71954EF45007FF9FF /* XHTwitterPaggingViewer.m */; };
+		AB166DAE1954FE8C007FF9FF /* XHDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB166DAD1954FE8C007FF9FF /* XHDemoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		AB166DA41954EE28007FF9FF /* XHPaggingNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHPaggingNavbar.m; sourceTree = "<group>"; };
 		AB166DA61954EF45007FF9FF /* XHTwitterPaggingViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTwitterPaggingViewer.h; sourceTree = "<group>"; };
 		AB166DA71954EF45007FF9FF /* XHTwitterPaggingViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTwitterPaggingViewer.m; sourceTree = "<group>"; };
+		AB166DAC1954FE8C007FF9FF /* XHDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHDemoViewController.h; sourceTree = "<group>"; };
+		AB166DAD1954FE8C007FF9FF /* XHDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHDemoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 			children = (
 				AB166D7F1954EB9E007FF9FF /* AppDelegate.h */,
 				AB166D801954EB9E007FF9FF /* AppDelegate.m */,
+				AB166DAC1954FE8C007FF9FF /* XHDemoViewController.h */,
+				AB166DAD1954FE8C007FF9FF /* XHDemoViewController.m */,
 				AB166D821954EB9E007FF9FF /* Images.xcassets */,
 				AB166D771954EB9E007FF9FF /* Supporting Files */,
 			);
@@ -258,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB166DAE1954FE8C007FF9FF /* XHDemoViewController.m in Sources */,
 				AB166D811954EB9E007FF9FF /* AppDelegate.m in Sources */,
 				AB166DA51954EE28007FF9FF /* XHPaggingNavbar.m in Sources */,
 				AB166DA81954EF45007FF9FF /* XHTwitterPaggingViewer.m in Sources */,
@@ -383,6 +389,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TwitterPagging/TwitterPagging-Prefix.pch";
 				INFOPLIST_FILE = "TwitterPagging/TwitterPagging-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -396,6 +403,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TwitterPagging/TwitterPagging-Prefix.pch";
 				INFOPLIST_FILE = "TwitterPagging/TwitterPagging-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
