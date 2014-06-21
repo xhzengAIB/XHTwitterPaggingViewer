@@ -12,6 +12,9 @@ typedef void(^XHDidChangedPageBlock)(NSInteger currentPage, NSString *title);
 
 @interface XHTwitterPaggingViewer : UIViewController
 
+/**
+ *  改变页码的回调
+ */
 @property (nonatomic, copy) XHDidChangedPageBlock didChangedPageCompleted;
 
 /**
@@ -19,8 +22,16 @@ typedef void(^XHDidChangedPageBlock)(NSInteger currentPage, NSString *title);
  */
 @property (nonatomic, strong) NSArray *viewControllers;
 
+/**
+ *  获取当前页码
+ *
+ *  @return 返回当前页码
+ */
 - (NSInteger)getCurrentPageIndex;
 
+/**
+ *  设置控制器数据源，进行reload的方法
+ */
 - (void)reloadData;
 
 @end

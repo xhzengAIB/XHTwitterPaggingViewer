@@ -14,13 +14,59 @@
 
 @interface XHPaggingNavbar ()
 
+/**
+ *  分页指示器
+ */
 @property (nonatomic, strong) UIPageControl *pageControl;
 
+/**
+ *  title label 集合
+ */
 @property (nonatomic, strong) NSMutableArray *titleLabels;
 
 @end
 
 @implementation XHPaggingNavbar
+
+#pragma mark - DataSource
+
+- (void)reloadData {
+    if (!self.titles.count) {
+        return;
+    }
+    
+    [self.titleLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
+        label.hidden = YES;
+    }];
+    
+    for (NSString *title in self.titles) {
+        NSInteger index = [self.titles indexOfObject:title];
+        CGRect titleLabelFrame = CGRectMake((index * (kXHiPad ? 240 : 100)), 8, CGRectGetWidth(self.bounds), 20);
+        UILabel *titleLabel = (UILabel *)[self viewWithTag:kXHLabelBaseTag + index];
+        if (!titleLabel) {
+            titleLabel = [[UILabel alloc] init];
+            [self addSubview:titleLabel];
+            [self.titleLabels addObject:titleLabel];
+        }
+        titleLabel.hidden = NO;
+        titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+        titleLabel.font = [UIFont boldSystemFontOfSize:17];
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.textColor = [UIColor whiteColor];
+        titleLabel.backgroundColor = [UIColor clearColor];
+        titleLabel.text = title;
+        titleLabel.frame = titleLabelFrame;
+        if (self.currentPage == index) {
+            titleLabel.alpha = 1.0;
+        } else {
+            titleLabel.alpha = 0.0;
+        }
+    }
+    
+    self.pageControl.numberOfPages = self.titles.count;
+}
+
+#pragma mark - Propertys
 
 - (void)setCurrentPage:(NSInteger)currentPage {
     _currentPage = currentPage;
@@ -81,44 +127,6 @@
         }
     }
 }
-
-- (void)reloadData {
-    if (!self.titles.count) {
-        return;
-    }
-    
-    [self.titleLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
-        label.hidden = YES;
-    }];
-    
-    for (NSString *title in self.titles) {
-        NSInteger index = [self.titles indexOfObject:title];
-        CGRect titleLabelFrame = CGRectMake((index * (kXHiPad ? 240 : 100)), 8, CGRectGetWidth(self.bounds), 20);
-        UILabel *titleLabel = (UILabel *)[self viewWithTag:kXHLabelBaseTag + index];
-        if (!titleLabel) {
-            titleLabel = [[UILabel alloc] init];
-            [self addSubview:titleLabel];
-            [self.titleLabels addObject:titleLabel];
-        }
-        titleLabel.hidden = NO;
-        titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-        titleLabel.font = [UIFont boldSystemFontOfSize:17];
-        titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.textColor = [UIColor whiteColor];
-        titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.text = title;
-        titleLabel.frame = titleLabelFrame;
-        if (self.currentPage == index) {
-            titleLabel.alpha = 1.0;
-        } else {
-            titleLabel.alpha = 0.0;
-        }
-    }
-    
-    self.pageControl.numberOfPages = self.titles.count;
-}
-
-#pragma mark - Propertys
 
 - (UIPageControl *)pageControl {
     if (!_pageControl) {

@@ -12,10 +12,19 @@
 
 @interface XHTwitterPaggingViewer () <UIScrollViewDelegate>
 
+/**
+ *  显示内容的容器
+ */
 @property (nonatomic, strong) UIScrollView *paggingScrollView;
 
+/**
+ *  显示title集合的容器
+ */
 @property (nonatomic, strong) XHPaggingNavbar *paggingNavbar;
 
+/**
+ *  标识当前页码
+ */
 @property (nonatomic, assign) NSInteger currentPage;
 
 @end
@@ -125,6 +134,31 @@
     
 }
 
+#pragma mark - Block Call Back Method
+
+- (void)callBackChangedPage {
+    if (self.didChangedPageCompleted) {
+        self.didChangedPageCompleted(self.currentPage, [[self.viewControllers valueForKey:@"title"] objectAtIndex:self.currentPage]);
+    }
+}
+
+#pragma mark - TableView Helper Method
+
+- (void)setupScrollToTop {
+    for (int i = 0; i < self.viewControllers.count; i ++) {
+        UITableView *tableView = (UITableView *)[self subviewWithClass:[UITableView class] onView:[self getPageViewControllerAtIndex:i].view];
+        if (tableView) {
+            if (self.currentPage == i) {
+                [tableView setScrollsToTop:YES];
+            } else {
+                [tableView setScrollsToTop:NO];
+            }
+        }
+    }
+}
+
+#pragma mark - View Helper Method
+
 - (UIView *)subviewWithClass:(Class)cuurentClass onView:(UIView *)view {
     for (UIView *subView in view.subviews) {
         if ([subView isKindOfClass:cuurentClass]) {
@@ -146,25 +180,6 @@
     
     // 根据当前的x坐标和页宽度计算出当前页数
     self.currentPage = floor((scrollView.contentOffset.x - pageWidth/ 2) / pageWidth)+ 1;
-}
-
-- (void)callBackChangedPage {
-    if (self.didChangedPageCompleted) {
-        self.didChangedPageCompleted(self.currentPage, [[self.viewControllers valueForKey:@"title"] objectAtIndex:self.currentPage]);
-    }
-}
-
-- (void)setupScrollToTop {
-    for (int i = 0; i < self.viewControllers.count; i ++) {
-        UITableView *tableView = (UITableView *)[self subviewWithClass:[UITableView class] onView:[self getPageViewControllerAtIndex:i].view];
-        if (tableView) {
-            if (self.currentPage == i) {
-                [tableView setScrollsToTop:YES];
-            } else {
-                [tableView setScrollsToTop:NO];
-            }
-        }
-    }
 }
 
 @end
