@@ -55,6 +55,8 @@
     
     self.paggingNavbar.titles = [self.viewControllers valueForKey:@"title"];
     [self.paggingNavbar reloadData];
+    
+    [self setupScrollToTop];
 }
 
 #pragma mark - Propertys
@@ -103,13 +105,20 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self setupNavigationBar];
+    
+    [self setupViews];
+    
+    [self reloadData];
+}
+
+- (void)setupNavigationBar {
     if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
         [self setAutomaticallyAdjustsScrollViewInsets:NO];
         [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.291 green:0.607 blue:1.000 alpha:1.000]];
@@ -118,11 +127,10 @@
     }
     
     self.navigationItem.titleView = self.paggingNavbar;
-    
+}
+
+- (void)setupViews {
     [self.view addSubview:self.paggingScrollView];
-    
-    [self reloadData];
-    [self setupScrollToTop];
 }
 
 - (void)didReceiveMemoryWarning {
