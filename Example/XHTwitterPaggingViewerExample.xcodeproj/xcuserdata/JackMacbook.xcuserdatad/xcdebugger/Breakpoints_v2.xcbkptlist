@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../XHTwitterPaggingViewer/XHTwitterPaggingViewer.m"
-            timestampString = "425075751.263088"
+            timestampString = "425076761.55112"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "-dealloc"
             landmarkType = "5">
          </BreakpointContent>

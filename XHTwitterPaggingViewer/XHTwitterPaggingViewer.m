@@ -57,6 +57,8 @@
     [self.paggingNavbar reloadData];
     
     [self setupScrollToTop];
+    
+    [self callBackChangedPage];
 }
 
 #pragma mark - Propertys

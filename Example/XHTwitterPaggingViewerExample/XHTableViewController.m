@@ -15,7 +15,7 @@
 @implementation XHTableViewController
 
 - (void)loadDataSource {
-    self.dataSource = (NSMutableArray *)@[@"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo"];
+    self.dataSource = (NSMutableArray *)@[@"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -50,7 +50,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     cell.imageView.image = [UIImage imageNamed:@"meicon"];
-    cell.textLabel.text = @"这里是Demo";
+    cell.textLabel.text = self.dataSource[indexPath.row];
     
     return cell;
 }
