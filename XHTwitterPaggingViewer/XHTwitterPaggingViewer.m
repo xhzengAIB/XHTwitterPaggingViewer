@@ -79,6 +79,17 @@
     }
 }
 
+- (void)setCurrentPage:(NSInteger)currentPage {
+    if (_currentPage == currentPage)
+        return;
+    _currentPage = currentPage;
+    
+    self.paggingNavbar.currentPage = currentPage;
+    
+    [self setupScrollToTop];
+    [self callBackChangedPage];
+}
+
 #pragma mark - Life Cycle
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -135,11 +146,6 @@
     
     // 根据当前的x坐标和页宽度计算出当前页数
     self.currentPage = floor((scrollView.contentOffset.x - pageWidth/ 2) / pageWidth)+ 1;
-    
-    self.paggingNavbar.currentPage = self.currentPage;
-    
-    [self setupScrollToTop];
-    [self callBackChangedPage];
 }
 
 - (void)callBackChangedPage {
