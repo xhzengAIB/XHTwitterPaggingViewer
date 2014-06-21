@@ -8,7 +8,9 @@
 
 #import "XHPaggingNavbar.h"
 
-#define kXHLabelBaseTag 100
+#define kXHiPad ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+
+#define kXHLabelBaseTag 1000
 
 @interface XHPaggingNavbar ()
 
@@ -35,7 +37,7 @@
         UILabel *titleLabel = self.titleLabels[i];
         if ([titleLabel isKindOfClass:[UILabel class]]) {
             CGRect titleLabelFrame = titleLabel.frame;
-            titleLabelFrame.origin.x = (i * 100) - xOffset / 3.2;
+            titleLabelFrame.origin.x = (i * (kXHiPad ? 240 : 100)) - xOffset / 3.2;
             titleLabel.frame = titleLabelFrame;
             
             CGFloat alpha;
@@ -68,15 +70,20 @@
         return;
     }
     
+    [self.titleLabels enumerateObjectsUsingBlock:^(UILabel *label, NSUInteger idx, BOOL *stop) {
+        label.hidden = YES;
+    }];
+    
     for (NSString *title in self.titles) {
         NSInteger index = [self.titles indexOfObject:title];
-        CGRect titleLabelFrame = CGRectMake((index * 100), 8, CGRectGetWidth(self.bounds), 20);
+        CGRect titleLabelFrame = CGRectMake((index * (kXHiPad ? 240 : 100)), 8, CGRectGetWidth(self.bounds), 20);
         UILabel *titleLabel = (UILabel *)[self viewWithTag:kXHLabelBaseTag + index];
         if (!titleLabel) {
             titleLabel = [[UILabel alloc] init];
             [self addSubview:titleLabel];
             [self.titleLabels addObject:titleLabel];
         }
+        titleLabel.hidden = NO;
         titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         titleLabel.font = [UIFont boldSystemFontOfSize:17];
         titleLabel.textAlignment = NSTextAlignmentCenter;
