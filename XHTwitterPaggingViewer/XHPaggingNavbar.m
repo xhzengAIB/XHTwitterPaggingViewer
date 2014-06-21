@@ -81,6 +81,7 @@
         titleLabel.font = [UIFont boldSystemFontOfSize:17];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.textColor = [UIColor whiteColor];
+        titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.text = title;
         titleLabel.frame = titleLabelFrame;
         if (self.currentPage == index) {

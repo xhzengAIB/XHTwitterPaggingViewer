@@ -32,6 +32,10 @@
     
     twitterPaggingViewer.viewControllers = @[demoViewController1, tableViewController, demoViewController3];
     
+    twitterPaggingViewer.didChangedPageCompleted = ^(NSInteger cuurentPage, NSString *title) {
+        NSLog(@"cuurentPage : %ld on title : %@", (long)cuurentPage, title);
+    };
+    
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:twitterPaggingViewer];
     
     [self.window makeKeyAndVisible];

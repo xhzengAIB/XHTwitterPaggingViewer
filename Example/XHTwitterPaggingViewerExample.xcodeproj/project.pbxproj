@@ -403,6 +403,7 @@
 				INFOPLIST_FILE = "XHTwitterPaggingViewerExample/XHTwitterPaggingViewerExample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "09CE68E2-F150-4120-9E42-436377D9C09A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -417,6 +418,7 @@
 				INFOPLIST_FILE = "XHTwitterPaggingViewerExample/XHTwitterPaggingViewerExample-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "09CE68E2-F150-4120-9E42-436377D9C09A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

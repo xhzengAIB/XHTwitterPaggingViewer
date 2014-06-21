@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^XHDidChangedPageBlock)(NSInteger currentPage);
+typedef void(^XHDidChangedPageBlock)(NSInteger currentPage, NSString *title);
 
 @interface XHTwitterPaggingViewer : UIViewController
 

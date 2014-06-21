@@ -66,6 +66,7 @@
 - (XHPaggingNavbar *)paggingNavbar {
     if (!_paggingNavbar) {
         _paggingNavbar = [[XHPaggingNavbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds) / 2.0, 44)];
+        _paggingNavbar.backgroundColor = [UIColor clearColor];
     }
     return _paggingNavbar;
 }
@@ -92,6 +93,8 @@
     if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
         [self setAutomaticallyAdjustsScrollViewInsets:NO];
         [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.291 green:0.607 blue:1.000 alpha:1.000]];
+    } else {
+        [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:0.291 green:0.607 blue:1.000 alpha:1.000]];
     }
     
     self.navigationItem.titleView = self.paggingNavbar;
@@ -136,6 +139,13 @@
     self.paggingNavbar.currentPage = self.currentPage;
     
     [self setupScrollToTop];
+    [self callBackChangedPage];
+}
+
+- (void)callBackChangedPage {
+    if (self.didChangedPageCompleted) {
+        self.didChangedPageCompleted(self.currentPage, [[self.viewControllers valueForKey:@"title"] objectAtIndex:self.currentPage]);
+    }
 }
 
 - (void)setupScrollToTop {
