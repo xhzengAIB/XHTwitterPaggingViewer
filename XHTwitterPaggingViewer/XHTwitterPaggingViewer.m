@@ -131,7 +131,14 @@
 }
 
 - (void)dealloc {
+    self.paggingScrollView.delegate = nil;
+    self.paggingScrollView = nil;
     
+    self.paggingNavbar = nil;
+    
+    self.viewControllers = nil;
+    
+    self.didChangedPageCompleted = nil;
 }
 
 #pragma mark - Block Call Back Method

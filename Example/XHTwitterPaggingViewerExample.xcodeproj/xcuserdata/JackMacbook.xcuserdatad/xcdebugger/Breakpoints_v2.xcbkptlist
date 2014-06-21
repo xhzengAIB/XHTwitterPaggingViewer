@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../XHTwitterPaggingViewer/XHTwitterPaggingViewer.m"
-            timestampString = "425006236.319129"
+            timestampString = "425075751.263088"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "-reloadData"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "-dealloc"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,29 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "../XHTwitterPaggingViewer/XHTwitterPaggingViewer.m"
-            timestampString = "425063301.088775"
+            filePath = "../XHTwitterPaggingViewer/XHPaggingNavbar.m"
+            timestampString = "425075754.720527"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "-paggingNavbar"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "XHTwitterPaggingViewerExample/XHTableViewController.m"
-            timestampString = "425008369.39425"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
-            landmarkName = "-viewDidAppear:"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "-dealloc"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -160,4 +160,9 @@
     return self;
 }
 
+- (void)dealloc {
+    self.pageControl = nil;
+    self.titleLabels = nil;
+}
+
 @end
