@@ -82,46 +82,18 @@
     for (int i = 0; i < self.titleLabels.count; i ++) {
         UILabel *titleLabel = self.titleLabels[i];
         if ([titleLabel isKindOfClass:[UILabel class]]) {
+            
+            // frame
             CGRect titleLabelFrame = titleLabel.frame;
             titleLabelFrame.origin.x = (i * (kXHiPad ? 240 : 100)) - xOffset / 3.2;
             titleLabel.frame = titleLabelFrame;
             
+            // alpha
             CGFloat alpha;
-            
-            switch (i) {
-                case 0:
-                    alpha = 1 - (xOffset / normalWidth);
-                    break;
-                case 1:
-                    if (xOffset < normalWidth) {
-                        alpha = xOffset / normalWidth;
-                    } else {
-                        alpha = 1 - (xOffset - normalWidth) / normalWidth;
-                    }
-                    break;
-                case 2:
-                    if (xOffset < normalWidth * 2) {
-                        alpha = (xOffset - normalWidth) / normalWidth;
-                    } else {
-                        alpha = 1 - ((xOffset - normalWidth * 2) / normalWidth);
-                    }
-                    break;
-                case 3:
-                    if (xOffset < normalWidth * 3) {
-                        alpha = (xOffset - normalWidth * 2) / normalWidth;
-                    } else {
-                        alpha = 1 - ((xOffset - normalWidth * 3) / normalWidth);
-                    }
-                    break;
-                case 4:
-                    if (xOffset < normalWidth * 4) {
-                        alpha = (xOffset - normalWidth * 3) / normalWidth;
-                    } else {
-                        alpha = 1 - ((xOffset - normalWidth * 4) / normalWidth);
-                    }
-                    break;
-                default:
-                    break;
+            if(xOffset < normalWidth * i){
+                alpha = (xOffset - normalWidth * (i-1))/ normalWidth;
+            }else{
+                alpha = 1 - ((xOffset - normalWidth * i) /  normalWidth);
             }
             titleLabel.alpha = alpha;
         }
