@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ABFA67DB1955109B00335010"
+               BlueprintIdentifier = "ABFA681F195510C800335010"
                BuildableName = "XHTwitterPaggingViewerExample.app"
                BlueprintName = "XHTwitterPaggingViewerExample"
                ReferencedContainer = "container:XHTwitterPaggingViewerExample.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ABFA67FF1955109C00335010"
+               BlueprintIdentifier = "ABFA683A195510C800335010"
                BuildableName = "XHTwitterPaggingViewerExampleTests.xctest"
                BlueprintName = "XHTwitterPaggingViewerExampleTests"
                ReferencedContainer = "container:XHTwitterPaggingViewerExample.xcodeproj">
@@ -42,7 +42,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ABFA67DB1955109B00335010"
+            BlueprintIdentifier = "ABFA681F195510C800335010"
             BuildableName = "XHTwitterPaggingViewerExample.app"
             BlueprintName = "XHTwitterPaggingViewerExample"
             ReferencedContainer = "container:XHTwitterPaggingViewerExample.xcodeproj">
@@ -61,7 +61,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ABFA67DB1955109B00335010"
+            BlueprintIdentifier = "ABFA681F195510C800335010"
             BuildableName = "XHTwitterPaggingViewerExample.app"
             BlueprintName = "XHTwitterPaggingViewerExample"
             ReferencedContainer = "container:XHTwitterPaggingViewerExample.xcodeproj">
@@ -79,7 +79,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "ABFA67DB1955109B00335010"
+            BlueprintIdentifier = "ABFA681F195510C800335010"
             BuildableName = "XHTwitterPaggingViewerExample.app"
             BlueprintName = "XHTwitterPaggingViewerExample"
             ReferencedContainer = "container:XHTwitterPaggingViewerExample.xcodeproj">
