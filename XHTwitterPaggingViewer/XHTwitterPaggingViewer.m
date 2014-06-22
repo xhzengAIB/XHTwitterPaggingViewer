@@ -43,7 +43,7 @@
     }
     
     [self.viewControllers enumerateObjectsUsingBlock:^(UIViewController *viewController, NSUInteger idx, BOOL *stop) {
-        CGRect contentViewFrame = viewController.view.frame;
+        CGRect contentViewFrame = viewController.view.bounds;
         contentViewFrame.origin.x = idx * CGRectGetWidth(self.view.bounds);
         viewController.view.frame = contentViewFrame;
         [self.paggingScrollView addSubview:viewController.view];
