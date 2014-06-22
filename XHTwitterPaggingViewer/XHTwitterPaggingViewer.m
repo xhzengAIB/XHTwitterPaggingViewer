@@ -42,6 +42,8 @@
         return;
     }
     
+    [self.paggingScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
     [self.viewControllers enumerateObjectsUsingBlock:^(UIViewController *viewController, NSUInteger idx, BOOL *stop) {
         CGRect contentViewFrame = viewController.view.bounds;
         contentViewFrame.origin.x = idx * CGRectGetWidth(self.view.bounds);
