@@ -42,15 +42,14 @@
         return;
     }
     
-    for (UIViewController *viewController in self.viewControllers) {
-        NSInteger index = [self.viewControllers indexOfObject:viewController];
+    [self.viewControllers enumerateObjectsUsingBlock:^(UIViewController *viewController, NSUInteger idx, BOOL *stop) {
         CGRect contentViewFrame = viewController.view.frame;
-        contentViewFrame.origin.x = index * CGRectGetWidth(self.view.bounds);
+        contentViewFrame.origin.x = idx * CGRectGetWidth(self.view.bounds);
         viewController.view.frame = contentViewFrame;
         [self.paggingScrollView addSubview:viewController.view];
         [self addChildViewController:viewController];
-    }
-    
+    }];
+
     [self.paggingScrollView setContentSize:CGSizeMake(CGRectGetWidth(self.view.bounds) * self.viewControllers.count, 0)];
     
     self.paggingNavbar.titles = [self.viewControllers valueForKey:@"title"];

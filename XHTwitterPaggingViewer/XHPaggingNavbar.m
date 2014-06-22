@@ -39,10 +39,9 @@
         label.hidden = YES;
     }];
     
-    for (NSString *title in self.titles) {
-        NSInteger index = [self.titles indexOfObject:title];
-        CGRect titleLabelFrame = CGRectMake((index * (kXHiPad ? 240 : 100)), 8, CGRectGetWidth(self.bounds), 20);
-        UILabel *titleLabel = (UILabel *)[self viewWithTag:kXHLabelBaseTag + index];
+    [self.titles enumerateObjectsUsingBlock:^(NSString *title, NSUInteger idx, BOOL *stop) {
+        CGRect titleLabelFrame = CGRectMake((idx * (kXHiPad ? 240 : 100)), 8, CGRectGetWidth(self.bounds), 20);
+        UILabel *titleLabel = (UILabel *)[self viewWithTag:kXHLabelBaseTag + idx];
         if (!titleLabel) {
             titleLabel = [[UILabel alloc] init];
             [self addSubview:titleLabel];
@@ -56,12 +55,12 @@
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.text = title;
         titleLabel.frame = titleLabelFrame;
-        if (self.currentPage == index) {
+        if (self.currentPage == idx) {
             titleLabel.alpha = 1.0;
         } else {
             titleLabel.alpha = 0.0;
         }
-    }
+    }];
     
     self.pageControl.numberOfPages = self.titles.count;
 }
@@ -79,25 +78,25 @@
     CGFloat xOffset = contentOffset.x;
     
     CGFloat normalWidth = CGRectGetWidth([[UIScreen mainScreen] bounds]);
-    for (int i = 0; i < self.titleLabels.count; i ++) {
-        UILabel *titleLabel = self.titleLabels[i];
+    
+    [self.titleLabels enumerateObjectsUsingBlock:^(UILabel *titleLabel, NSUInteger idx, BOOL *stop) {
         if ([titleLabel isKindOfClass:[UILabel class]]) {
             
             // frame
             CGRect titleLabelFrame = titleLabel.frame;
-            titleLabelFrame.origin.x = (i * (kXHiPad ? 240 : 100)) - xOffset / 3.2;
+            titleLabelFrame.origin.x = (idx * (kXHiPad ? 240 : 100)) - xOffset / 3.2;
             titleLabel.frame = titleLabelFrame;
             
             // alpha
             CGFloat alpha;
-            if(xOffset < normalWidth * i){
-                alpha = (xOffset - normalWidth * (i-1))/ normalWidth;
+            if(xOffset < normalWidth * idx) {
+                alpha = (xOffset - normalWidth * (idx - 1)) / normalWidth;
             }else{
-                alpha = 1 - ((xOffset - normalWidth * i) /  normalWidth);
+                alpha = 1 - ((xOffset - normalWidth * idx) / normalWidth);
             }
             titleLabel.alpha = alpha;
         }
-    }
+    }];
 }
 
 - (UIPageControl *)pageControl {
