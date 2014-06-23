@@ -12,4 +12,6 @@
 
 @interface XHTableViewController : XHBaseTableViewController
 
+@property (nonatomic, assign) BOOL showPushDetail;
+
 @end

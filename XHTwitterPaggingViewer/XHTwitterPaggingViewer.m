@@ -10,11 +10,17 @@
 
 #import "XHPaggingNavbar.h"
 
-@interface XHTwitterPaggingViewer () <UIScrollViewDelegate, UIGestureRecognizerDelegate>
+typedef NS_ENUM(NSInteger, XHSlideType) {
+    XHSlideTypeLeft = 0,
+    XHSlideTypeRight = 1,
+};
+
+@interface XHTwitterPaggingViewer () <UIScrollViewDelegate>
 
 /**
  *  显示内容的容器
  */
+@property (nonatomic, strong) UIView *centerContainerView;
 @property (nonatomic, strong) UIScrollView *paggingScrollView;
 
 /**
@@ -69,6 +75,17 @@
 
 #pragma mark - Propertys
 
+- (UIView *)centerContainerView {
+    if (!_centerContainerView) {
+        _centerContainerView = [[UIView alloc] initWithFrame:self.view.bounds];
+        _centerContainerView.backgroundColor = [UIColor whiteColor];
+        
+        [_centerContainerView addSubview:self.paggingScrollView];
+        [self.paggingScrollView.panGestureRecognizer addTarget:self action:@selector(panGestureRecognizerHandle:)];
+    }
+    return _centerContainerView;
+}
+
 - (UIScrollView *)paggingScrollView {
     if (!_paggingScrollView) {
         _paggingScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
@@ -111,12 +128,27 @@
 
 #pragma mark - Life Cycle
 
-- (void)setupLeftViewControllerWithTargetViewController:(UIViewController *)targetViewController {
-    self.leftViewController = targetViewController;
-}
-
-- (void)setupRightViewControllerWithTargetViewController:(UIViewController *)targetViewController {
-    self.rightViewController = targetViewController;
+- (void)setupTargetViewController:(UIViewController *)targetViewController withSlideType:(XHSlideType)slideType {
+    if (!targetViewController)
+        return;
+    
+    [self addChildViewController:targetViewController];
+    CGRect targetViewFrame = targetViewController.view.frame;
+    switch (slideType) {
+        case XHSlideTypeLeft: {
+            targetViewFrame.origin.x = -CGRectGetWidth(self.view.bounds);
+            break;
+        }
+        case XHSlideTypeRight: {
+            targetViewFrame.origin.x = CGRectGetWidth(self.view.bounds) * 2;
+            break;
+        }
+        default:
+            break;
+    }
+    targetViewController.view.frame = targetViewFrame;
+    [self.view insertSubview:targetViewController.view atIndex:0];
+    [targetViewController didMoveToParentViewController:self];
 }
 
 - (instancetype)initWithLeftViewController:(UIViewController *)leftViewController {
@@ -130,13 +162,9 @@
 - (instancetype)initWithLeftViewController:(UIViewController *)leftViewController rightViewController:(UIViewController *)rightViewController {
     self = [super init];
     if (self) {
-        if (leftViewController) {
-            [self setupLeftViewControllerWithTargetViewController:leftViewController];
-        }
+        self.leftViewController = leftViewController;
         
-        if (rightViewController) {
-            [self setupRightViewControllerWithTargetViewController:rightViewController];
-        }
+        self.rightViewController = rightViewController;
     }
     return self;
 }
@@ -159,17 +187,29 @@
 - (void)setupNavigationBar {
     if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
         [self setAutomaticallyAdjustsScrollViewInsets:NO];
-        [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:0.291 green:0.607 blue:1.000 alpha:1.000]];
+        
+        // 设置导航条背景颜色，在iOS7才这么用
+        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.291 green:0.607 blue:1.000 alpha:1.000]];
+        // 设置导航条的返回按钮或者系统按钮的文字颜色，在iOS7才这么用
+        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+        // 设置导航条的title文字颜色，在iOS7才这么用
+        [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                              [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont boldSystemFontOfSize:17], NSFontAttributeName, nil]];
+
     } else {
-        [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:0.291 green:0.607 blue:1.000 alpha:1.000]];
+        // 设置导航条的背景颜色，在iOS7以下才这么用
+        [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.291 green:0.607 blue:1.000 alpha:1.000]];
     }
+
     
     self.navigationItem.titleView = self.paggingNavbar;
 }
 
 - (void)setupViews {
-    [self.view addSubview:self.paggingScrollView];
-    [self.paggingScrollView.panGestureRecognizer addTarget:self action:@selector(panGestureRecognizerHandle:)];
+    [self.view addSubview:self.centerContainerView];
+    
+    [self setupTargetViewController:self.leftViewController withSlideType:XHSlideTypeLeft];
+    [self setupTargetViewController:self.rightViewController withSlideType:XHSlideTypeRight];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -197,14 +237,39 @@
     
     CGFloat baseWidth = CGRectGetWidth(self.paggingScrollView.bounds);
     
-    if (contentOffset.x <= 0) {
-        // 滑动到最左边
-        NSLog(@"左边");
-    } else if (contentOffset.x >= contentSize.width - baseWidth) {
-        // 滑动到最右边
-        NSLog(@"右边");
+    switch (panGestureRecognizer.state) {
+        case UIGestureRecognizerStateBegan:
+            
+            break;
+        case UIGestureRecognizerStateChanged: {
+            CGPoint translationPoint = [panGestureRecognizer translationInView:panGestureRecognizer.view];
+            if (contentOffset.x <= 0) {
+                // 滑动到最左边
+                
+                CGRect centerContainerViewFrame = self.centerContainerView.frame;
+                centerContainerViewFrame.origin.x += translationPoint.x;
+                self.centerContainerView.frame = centerContainerViewFrame;
+                
+                CGRect leftMenuViewFrame = self.leftViewController.view.frame;
+                leftMenuViewFrame.origin.x += translationPoint.x;
+                self.leftViewController.view.frame = leftMenuViewFrame;
+                
+                [panGestureRecognizer setTranslation:CGPointZero inView:panGestureRecognizer.view];
+            } else if (contentOffset.x >= contentSize.width - baseWidth) {
+                // 滑动到最右边
+                [panGestureRecognizer setTranslation:CGPointZero inView:panGestureRecognizer.view];
+            }
+            break;
+        }
+        case UIGestureRecognizerStateFailed:
+        case UIGestureRecognizerStateEnded:
+        case UIGestureRecognizerStateCancelled: {
+            // 判断是否打开或关闭Menu
+            break;
+        }
+        default:
+            break;
     }
-    
 }
 
 #pragma mark - Block Call Back Method
@@ -239,12 +304,6 @@
         }
     }
     return nil;
-}
-
-#pragma mark - Gesture Delegate
-
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    return YES;
 }
 
 #pragma mark - UIScrollView Delegate

@@ -30,10 +30,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UIEdgeInsets edgeInsets = self.tableView.contentInset;
-    edgeInsets.top = ([XHFoundationCommon isIOS7] ? 64 : 0);
-    self.tableView.contentInset = edgeInsets;
-    self.tableView.scrollIndicatorInsets = edgeInsets;
+    if (!self.showPushDetail) {
+        UIEdgeInsets edgeInsets = self.tableView.contentInset;
+        edgeInsets.top = ([XHFoundationCommon isIOS7] ? 64 : 0);
+        self.tableView.contentInset = edgeInsets;
+        self.tableView.scrollIndicatorInsets = edgeInsets;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,8 +66,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    [self.navigationController pushViewController:[[[self class] alloc] init] animated:YES];
+    XHTableViewController *detailTableViewController = [[[self class] alloc] init];
+    detailTableViewController.showPushDetail = YES;
+    detailTableViewController.title = @"Detail";
+    [self.navigationController pushViewController:detailTableViewController animated:YES];
 }
 
 @end
