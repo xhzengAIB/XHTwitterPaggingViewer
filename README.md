@@ -39,7 +39,6 @@ NSArray *titles = @[@"Home", @"Friend", @"曾宪华", @"News", @"Viewer", @"Fram
     [viewControllers addObject:tableViewController];
 }];
     
-    
 twitterPaggingViewer.viewControllers = viewControllers;
 
 twitterPaggingViewer.didChangedPageCompleted = ^(NSInteger cuurentPage, NSString *title) {
