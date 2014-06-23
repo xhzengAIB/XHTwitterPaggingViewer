@@ -22,6 +22,36 @@ typedef void(^XHDidChangedPageBlock)(NSInteger currentPage, NSString *title);
  */
 @property (nonatomic, strong) NSArray *viewControllers;
 
+/*************************以下初始化方法都不使用的话，那讲初始化一个没有滑动菜单的Viewer控制器*************/
+/**
+ *  初始化带有左边滑动菜单的Viewer控制器
+ *
+ *  @param leftViewController 目标左边菜单控制器对象
+ *
+ *  @return 返回Viewer控制器对象
+ */
+- (instancetype)initWithLeftViewController:(UIViewController *)leftViewController;
+
+/**
+ *  初始化带有右边滑动菜单的Viewer控制器
+ *
+ *  @param rightViewController 目标右边菜单控制器对象
+ *
+ *  @return 返回Viewer控制器对象
+ */
+- (instancetype)initWithRightViewController:(UIViewController *)rightViewController;
+
+/**
+ *  初始化带有左右滑动菜单的Viewer控制器
+ *
+ *  @param leftViewController  目标左边菜单控制器对象
+ *  @param rightViewController 目标右边菜单控制器对象
+ *
+ *  @return 返回Viewer控制对象
+ */
+- (instancetype)initWithLeftViewController:(UIViewController *)leftViewController rightViewController:(UIViewController *)rightViewController;
+/********************************************************************************************/
+
 /**
  *  获取当前页码
  *

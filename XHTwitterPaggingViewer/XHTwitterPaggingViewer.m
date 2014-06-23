@@ -10,7 +10,7 @@
 
 #import "XHPaggingNavbar.h"
 
-@interface XHTwitterPaggingViewer () <UIScrollViewDelegate>
+@interface XHTwitterPaggingViewer () <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
 /**
  *  显示内容的容器
@@ -26,6 +26,11 @@
  *  标识当前页码
  */
 @property (nonatomic, assign) NSInteger currentPage;
+
+
+@property (nonatomic, strong) UIViewController *leftViewController;
+
+@property (nonatomic, strong) UIViewController *rightViewController;
 
 @end
 
@@ -106,6 +111,36 @@
 
 #pragma mark - Life Cycle
 
+- (void)setupLeftViewControllerWithTargetViewController:(UIViewController *)targetViewController {
+    self.leftViewController = targetViewController;
+}
+
+- (void)setupRightViewControllerWithTargetViewController:(UIViewController *)targetViewController {
+    self.rightViewController = targetViewController;
+}
+
+- (instancetype)initWithLeftViewController:(UIViewController *)leftViewController {
+    return [self initWithLeftViewController:leftViewController rightViewController:nil];
+}
+
+- (instancetype)initWithRightViewController:(UIViewController *)rightViewController {
+    return [self initWithLeftViewController:nil rightViewController:rightViewController];
+}
+
+- (instancetype)initWithLeftViewController:(UIViewController *)leftViewController rightViewController:(UIViewController *)rightViewController {
+    self = [super init];
+    if (self) {
+        if (leftViewController) {
+            [self setupLeftViewControllerWithTargetViewController:leftViewController];
+        }
+        
+        if (rightViewController) {
+            [self setupRightViewControllerWithTargetViewController:rightViewController];
+        }
+    }
+    return self;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
@@ -134,6 +169,7 @@
 
 - (void)setupViews {
     [self.view addSubview:self.paggingScrollView];
+    [self.paggingScrollView.panGestureRecognizer addTarget:self action:@selector(panGestureRecognizerHandle:)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -150,6 +186,25 @@
     self.viewControllers = nil;
     
     self.didChangedPageCompleted = nil;
+}
+
+#pragma mark - PanGesture Handle Method
+
+- (void)panGestureRecognizerHandle:(UIPanGestureRecognizer *)panGestureRecognizer {
+    CGPoint contentOffset = self.paggingScrollView.contentOffset;
+    
+    CGSize contentSize = self.paggingScrollView.contentSize;
+    
+    CGFloat baseWidth = CGRectGetWidth(self.paggingScrollView.bounds);
+    
+    if (contentOffset.x <= 0) {
+        // 滑动到最左边
+        NSLog(@"左边");
+    } else if (contentOffset.x >= contentSize.width - baseWidth) {
+        // 滑动到最右边
+        NSLog(@"右边");
+    }
+    
 }
 
 #pragma mark - Block Call Back Method
@@ -186,7 +241,17 @@
     return nil;
 }
 
+#pragma mark - Gesture Delegate
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    return YES;
+}
+
 #pragma mark - UIScrollView Delegate
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
+    
+}
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     self.paggingNavbar.contentOffset = scrollView.contentOffset;
