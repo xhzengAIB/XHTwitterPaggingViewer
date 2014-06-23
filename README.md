@@ -26,27 +26,27 @@ and run `pod install`, then you're all done!
 Easy to drop into your project.                                
 ```objc
 
-    XHTwitterPaggingViewer *twitterPaggingViewer = [[XHTwitterPaggingViewer alloc] init];
+XHTwitterPaggingViewer *twitterPaggingViewer = [[XHTwitterPaggingViewer alloc] init];
     
     
-    NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithCapacity:7];
+NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithCapacity:7];
     
-    NSArray *titles = @[@"Home", @"Friend", @"曾宪华", @"News", @"Viewer", @"Framework", @"Pagging"];
+NSArray *titles = @[@"Home", @"Friend", @"曾宪华", @"News", @"Viewer", @"Framework", @"Pagging"];
+
+[titles enumerateObjectsUsingBlock:^(NSString *title, NSUInteger idx, BOOL *stop) {
+    XHTableViewController *tableViewController = [[XHTableViewController alloc] init];
+    tableViewController.title = title;
+    [viewControllers addObject:tableViewController];
+}];
     
-    [titles enumerateObjectsUsingBlock:^(NSString *title, NSUInteger idx, BOOL *stop) {
-        XHTableViewController *tableViewController = [[XHTableViewController alloc] init];
-        tableViewController.title = title;
-        [viewControllers addObject:tableViewController];
-    }];
     
+twitterPaggingViewer.viewControllers = viewControllers;
+
+twitterPaggingViewer.didChangedPageCompleted = ^(NSInteger cuurentPage, NSString *title) {
+    NSLog(@"cuurentPage : %ld on title : %@", (long)cuurentPage, title);
+};
     
-    twitterPaggingViewer.viewControllers = viewControllers;
-    
-    twitterPaggingViewer.didChangedPageCompleted = ^(NSInteger cuurentPage, NSString *title) {
-        NSLog(@"cuurentPage : %ld on title : %@", (long)cuurentPage, title);
-    };
-    
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:twitterPaggingViewer];
+self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:twitterPaggingViewer];
 
 
 ```
