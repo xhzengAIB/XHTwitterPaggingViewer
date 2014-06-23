@@ -21,29 +21,19 @@
     
     XHTwitterPaggingViewer *twitterPaggingViewer = [[XHTwitterPaggingViewer alloc] init];
     
-    XHTableViewController *demoViewController1 = [[XHTableViewController alloc] init];
-    demoViewController1.title = @"Home";
     
-    XHTableViewController *tableViewController = [[XHTableViewController alloc] init];
-    tableViewController.title = @"Friend";
+    NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithCapacity:7];
     
-    XHTableViewController *demoViewController3 = [[XHTableViewController alloc] init];
-    demoViewController3.title = @"曾宪华";
+    NSArray *titles = @[@"Home", @"Friend", @"曾宪华", @"News", @"Viewer", @"Framework", @"Pagging"];
     
-    XHTableViewController *demoViewController4 = [[XHTableViewController alloc] init];
-    demoViewController4.title = @"News";
-    
-    XHTableViewController *demoViewController5 = [[XHTableViewController alloc] init];
-    demoViewController5.title = @"Viewer";
-
-    XHTableViewController *demoViewController6 = [[XHTableViewController alloc] init];
-    demoViewController6.title = @"Framework";
-
-    XHTableViewController *demoViewController7 = [[XHTableViewController alloc] init];
-    demoViewController7.title = @"Pagging";
+    [titles enumerateObjectsUsingBlock:^(NSString *title, NSUInteger idx, BOOL *stop) {
+        XHTableViewController *tableViewController = [[XHTableViewController alloc] init];
+        tableViewController.title = title;
+        [viewControllers addObject:tableViewController];
+    }];
     
     
-    twitterPaggingViewer.viewControllers = @[demoViewController1, tableViewController, demoViewController3, demoViewController4, demoViewController5, demoViewController6, demoViewController7];
+    twitterPaggingViewer.viewControllers = viewControllers;
     
     twitterPaggingViewer.didChangedPageCompleted = ^(NSInteger cuurentPage, NSString *title) {
         // NSLog(@"cuurentPage : %ld on title : %@", (long)cuurentPage, title);
