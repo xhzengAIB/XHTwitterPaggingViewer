@@ -27,8 +27,7 @@ Easy to drop into your project.
 ```objc
 
 XHTwitterPaggingViewer *twitterPaggingViewer = [[XHTwitterPaggingViewer alloc] init];
-    
-    
+
 NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithCapacity:7];
     
 NSArray *titles = @[@"Home", @"Friend", @"曾宪华", @"News", @"Viewer", @"Framework", @"Pagging"];
