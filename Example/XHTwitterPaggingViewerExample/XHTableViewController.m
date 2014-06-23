@@ -15,7 +15,7 @@
 @implementation XHTableViewController
 
 - (void)loadDataSource {
-    self.dataSource = (NSMutableArray *)@[@"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo", @"Test", @"Demo"];
+    self.dataSource = (NSMutableArray *)@[@"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer.", @"A twitter like navigation bar, page viewer."];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -48,8 +48,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell.textLabel.numberOfLines = 0;
     }
-    cell.imageView.image = [UIImage imageNamed:@"meicon"];
+    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_avator%d", (indexPath.row % 3)]];
     cell.textLabel.text = self.dataSource[indexPath.row];
     
     return cell;
@@ -58,7 +59,7 @@
 #pragma mark - UITableView Delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 80;
+    return 120;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

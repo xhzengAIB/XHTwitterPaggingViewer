@@ -31,23 +31,20 @@
     demoViewController3.title = @"曾宪华";
     
     XHTableViewController *demoViewController4 = [[XHTableViewController alloc] init];
-    demoViewController4.title = @"News1";
+    demoViewController4.title = @"News";
 
     
     XHTableViewController *demoViewController5 = [[XHTableViewController alloc] init];
-    demoViewController5.title = @"News5";
+    demoViewController5.title = @"Viewer";
 
     XHTableViewController *demoViewController6 = [[XHTableViewController alloc] init];
-    demoViewController6.title = @"News5";
+    demoViewController6.title = @"Framework";
 
     XHTableViewController *demoViewController7 = [[XHTableViewController alloc] init];
-    demoViewController7.title = @"News5";
-
-    XHTableViewController *demoViewController8 = [[XHTableViewController alloc] init];
-    demoViewController8.title = @"News5";
-
+    demoViewController7.title = @"Pagging";
     
-    twitterPaggingViewer.viewControllers = @[demoViewController1, tableViewController, demoViewController3, demoViewController4, demoViewController5, demoViewController6, demoViewController7, demoViewController8];
+    
+    twitterPaggingViewer.viewControllers = @[demoViewController1, tableViewController, demoViewController3, demoViewController4, demoViewController5, demoViewController6, demoViewController7];
     
     twitterPaggingViewer.didChangedPageCompleted = ^(NSInteger cuurentPage, NSString *title) {
         NSLog(@"cuurentPage : %ld on title : %@", (long)cuurentPage, title);
