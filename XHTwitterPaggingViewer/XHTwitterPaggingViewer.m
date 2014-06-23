@@ -242,17 +242,17 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
             
             break;
         case UIGestureRecognizerStateChanged: {
-            CGPoint translationPoint = [panGestureRecognizer translationInView:panGestureRecognizer.view];
+//            CGPoint translationPoint = [panGestureRecognizer translationInView:panGestureRecognizer.view];
             if (contentOffset.x <= 0) {
                 // 滑动到最左边
                 
-                CGRect centerContainerViewFrame = self.centerContainerView.frame;
-                centerContainerViewFrame.origin.x += translationPoint.x;
-                self.centerContainerView.frame = centerContainerViewFrame;
-                
-                CGRect leftMenuViewFrame = self.leftViewController.view.frame;
-                leftMenuViewFrame.origin.x += translationPoint.x;
-                self.leftViewController.view.frame = leftMenuViewFrame;
+//                CGRect centerContainerViewFrame = self.centerContainerView.frame;
+//                centerContainerViewFrame.origin.x += translationPoint.x;
+//                self.centerContainerView.frame = centerContainerViewFrame;
+//                
+//                CGRect leftMenuViewFrame = self.leftViewController.view.frame;
+//                leftMenuViewFrame.origin.x += translationPoint.x;
+//                self.leftViewController.view.frame = leftMenuViewFrame;
                 
                 [panGestureRecognizer setTranslation:CGPointZero inView:panGestureRecognizer.view];
             } else if (contentOffset.x >= contentSize.width - baseWidth) {
