@@ -193,24 +193,7 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     [self reloadData];
 }
 
-- (void)setupNavigationBar {
-    if ([self respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
-        [self setAutomaticallyAdjustsScrollViewInsets:NO];
-        
-        // 设置导航条背景颜色，在iOS7才这么用
-        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:0.291 green:0.607 blue:1.000 alpha:1.000]];
-        // 设置导航条的返回按钮或者系统按钮的文字颜色，在iOS7才这么用
-        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-        // 设置导航条的title文字颜色，在iOS7才这么用
-        [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                              [UIColor whiteColor], NSForegroundColorAttributeName, [UIFont boldSystemFontOfSize:17], NSFontAttributeName, nil]];
-
-    } else {
-        // 设置导航条的背景颜色，在iOS7以下才这么用
-        [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.291 green:0.607 blue:1.000 alpha:1.000]];
-    }
-
-    
+- (void)setupNavigationBar {   
     self.navigationItem.titleView = self.paggingNavbar;
 }
 
