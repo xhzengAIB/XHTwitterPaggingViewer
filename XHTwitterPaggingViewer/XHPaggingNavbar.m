@@ -41,9 +41,11 @@
     
     [self.titles enumerateObjectsUsingBlock:^(NSString *title, NSUInteger idx, BOOL *stop) {
         CGRect titleLabelFrame = CGRectMake((idx * (kXHiPad ? 240 : 100)), 8, CGRectGetWidth(self.bounds), 20);
-        UILabel *titleLabel = (UILabel *)[self viewWithTag:kXHLabelBaseTag + idx];
+        NSInteger tag = kXHLabelBaseTag + idx;
+        UILabel *titleLabel = (UILabel *)[self viewWithTag: tag];
         if (!titleLabel) {
             titleLabel = [[UILabel alloc] init];
+            titleLabel.tag = tag;
             [self addSubview:titleLabel];
             [self.titleLabels addObject:titleLabel];
         }
