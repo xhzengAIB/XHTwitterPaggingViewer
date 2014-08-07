@@ -180,6 +180,13 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    // Ensure that the paggingScrollView is the correct height.
+    // This facilitates situations where the XHTwitterPaggingViewer is shown within
+    // a UITabBarController.
+    CGRect scrollViewFrame = self.paggingScrollView.frame;
+    scrollViewFrame.size.height = self.view.frame.size.height;
+    self.paggingScrollView.frame = scrollViewFrame;
 }
 
 - (void)viewDidLoad {
