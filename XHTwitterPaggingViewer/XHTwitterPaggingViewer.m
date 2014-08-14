@@ -280,7 +280,9 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     UIViewController *toViewController = [self.viewControllers objectAtIndex:self.currentPage];
 
     [fromViewController viewWillDisappear: true];
+    [fromViewController viewDidDisappear: true];
     [toViewController viewWillAppear: true];
+    [toViewController viewDidAppear: true];
 
     if (self.didChangedPageCompleted) {
         self.didChangedPageCompleted(self.currentPage, [[self.viewControllers valueForKey:@"title"] objectAtIndex:self.currentPage]);
