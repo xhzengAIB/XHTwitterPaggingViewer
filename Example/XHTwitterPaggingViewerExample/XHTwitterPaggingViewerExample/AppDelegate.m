@@ -48,16 +48,11 @@
     
     [self.window makeKeyAndVisible];
     
-    [twitterPaggingViewer setCurrentPage:2 animated:NO];
+    // Setup Default Page
+    // [twitterPaggingViewer setCurrentPage:2 animated:NO];
     
-    [self performSelector:@selector(setCurrentPage) withObject:nil afterDelay:3];
-
+    
     return YES;
-}
-
-- (void)setCurrentPage {
-    [twitterPaggingViewer setCurrentPage:5 animated:YES];
-    [self performSelector:@selector(setCurrentPage) withObject:nil afterDelay:3];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
