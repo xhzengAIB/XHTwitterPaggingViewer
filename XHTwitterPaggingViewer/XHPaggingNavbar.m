@@ -55,7 +55,7 @@
         titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         titleLabel.font = [UIFont boldSystemFontOfSize:17];
         titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.textColor = [UIColor colorWithRed:0.090 green:0.574 blue:1.000 alpha:1.000];
+        titleLabel.textColor = [UINavigationBar appearance].tintColor;
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.text = title;
         titleLabel.frame = titleLabelFrame;

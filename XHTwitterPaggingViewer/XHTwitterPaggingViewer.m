@@ -36,6 +36,7 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
  *  标识当前页码
  */
 @property (nonatomic, assign) NSInteger currentPage;
+@property (nonatomic, assign) NSInteger lastPage;
 
 @property (nonatomic, strong) XHCategoryMenuView *categoryMenuView;
 
@@ -150,6 +151,7 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
 - (void)setCurrentPage:(NSInteger)currentPage {
     if (_currentPage == currentPage)
         return;
+    _lastPage = _currentPage;
     _currentPage = currentPage;
     
     self.paggingNavbar.currentPage = currentPage;
@@ -302,6 +304,14 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
 #pragma mark - Block Call Back Method
 
 - (void)callBackChangedPage {
+    UIViewController *fromViewController = [self.viewControllers objectAtIndex:self.lastPage];
+    UIViewController *toViewController = [self.viewControllers objectAtIndex:self.currentPage];
+
+    [fromViewController viewWillDisappear: true];
+    [fromViewController viewDidDisappear: true];
+    [toViewController viewWillAppear: true];
+    [toViewController viewDidAppear: true];
+
     if (self.didChangedPageCompleted) {
         self.didChangedPageCompleted(self.currentPage, [[self.viewControllers valueForKey:@"title"] objectAtIndex:self.currentPage]);
     }
