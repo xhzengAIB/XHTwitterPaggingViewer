@@ -10,13 +10,9 @@
 
 @implementation XHFoundationCommon
 
-+ (BOOL)isIOS7 {
-    return [[[UIDevice currentDevice] systemVersion] integerValue] >= 7.0;
-}
-
 + (CGFloat)getAdapterHeight {
     CGFloat adapterHeight = 0;
-    if (![self isIOS7]) {
+    if ([[[UIDevice currentDevice] systemVersion] integerValue] < 7.0) {
         adapterHeight = 44;
     }
     return adapterHeight;

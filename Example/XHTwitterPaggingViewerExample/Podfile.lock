@@ -1,10 +1,10 @@
 PODS:
-  - XHRefreshControl (0.2)
+  - XHRefreshControl (2.3)
 
 DEPENDENCIES:
   - XHRefreshControl
 
 SPEC CHECKSUMS:
-  XHRefreshControl: fa361a1e5fbcfdfe6a22534d168f233dee17655c
+  XHRefreshControl: 3f22d8c9e1e17dcedb25da41cbbb6a1059f0add4
 
 COCOAPODS: 0.33.1

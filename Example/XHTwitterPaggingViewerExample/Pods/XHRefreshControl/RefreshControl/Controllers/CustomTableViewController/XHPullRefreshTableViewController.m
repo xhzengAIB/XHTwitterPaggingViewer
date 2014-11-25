@@ -32,24 +32,39 @@
     [self.refreshControl endMoreOverWithMessage:message];
 }
 
-#pragma mark - Propertys
-
-- (XHRefreshControl *)refreshControl {
-    if (!_refreshControl) {
-        _refreshControl = [[XHRefreshControl alloc] initWithScrollView:self.tableView delegate:self];
-    }
-    return _refreshControl;
+- (void)handleLoadMoreError {
+    [self.refreshControl handleLoadMoreError];
 }
 
 #pragma mark - Life Cycle
+
+- (void)setupRefreshControl {
+    if (!_refreshControl) {
+        _refreshControl = [[XHRefreshControl alloc] initWithScrollView:self.tableView delegate:self];
+    }
+}
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.pullDownRefreshed = YES;
+        self.loadMoreRefreshed = YES;
+    }
+    return self;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if (self.pullDownRefreshed) {
+        [self setupRefreshControl];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.refreshViewType = XHPullDownRefreshViewTypeActivityIndicator;
-    self.pullDownRefreshed = YES;
-    self.loadMoreRefreshed = YES;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,22 +85,15 @@
 }
 
 - (NSString *)lastUpdateTimeString {
-    NSString *destDateString;
     
-    destDateString = [NSString stringWithFormat:@"上次刷新：%@", @"05-19 23:22"];
+    NSString *destDateString;
+    destDateString = @"从未更新";
     
     return destDateString;
 }
 
-- (BOOL)keepiOS7NewApiCharacter {
-    if (!self.navigationController)
-        return NO;
-    BOOL keeped = [[[UIDevice currentDevice] systemVersion] integerValue] >= 7.0;
-    return keeped;
-}
-
 - (NSInteger)autoLoadMoreRefreshedCountConverManual {
-    return 2;
+    return 5;
 }
 
 - (BOOL)isPullDownRefreshed {
@@ -97,11 +105,15 @@
 }
 
 - (XHRefreshViewLayerType)refreshViewLayerType {
-    return XHRefreshViewLayerTypeOnSuperView;
+    return XHRefreshViewLayerTypeOnScrollViews;
 }
 
 - (XHPullDownRefreshViewType)pullDownRefreshViewType {
     return self.refreshViewType;
+}
+
+- (NSString *)displayAutoLoadMoreRefreshedMessage {
+    return @"点击显示下10条";
 }
 
 @end

@@ -1,1 +1,1 @@
-../../XHRefreshControl/RefreshControl/XHLoadMoreView.h
+../../XHRefreshControl/RefreshControl/Views/XHLoadMoreView.h

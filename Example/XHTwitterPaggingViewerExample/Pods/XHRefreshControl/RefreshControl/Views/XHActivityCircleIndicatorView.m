@@ -1,16 +1,16 @@
 //
-//  XHActivityIndicatorView.m
+//  XHActivityCircleIndicatorView.m
 //  XHRefreshControlExample
 //
 //  Created by 曾 宪华 on 14-6-16.
 //  Copyright (c) 2014年 曾宪华 QQ群: (142557668) QQ:543413507  Gmail:xhzengAIB@gmail.com. All rights reserved.
 //
 
-#import "XHActivityIndicatorView.h"
+#import "XHActivityCircleIndicatorView.h"
 
 static NSString* const kXHRotationAnimation = @"XHRotationAnimation";
 
-@interface XHActivityIndicatorView ()
+@interface XHActivityCircleIndicatorView ()
 
 @property (nonatomic, strong) CALayer *standbyLayer;
 @property (nonatomic, strong) CALayer *animationLayer;
@@ -22,7 +22,7 @@ static NSString* const kXHRotationAnimation = @"XHRotationAnimation";
 
 @end
 
-@implementation XHActivityIndicatorView
+@implementation XHActivityCircleIndicatorView
 
 - (void)setup {
     self.standbyLayersArray = [[NSMutableArray alloc] init];
@@ -48,13 +48,30 @@ static NSString* const kXHRotationAnimation = @"XHRotationAnimation";
     self.animationLayer.hidden = YES;
 }
 
-- (id)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        [self setup];
     }
     return self;
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    if (newSuperview) {
+        [self setup];
+    }
+}
+
+- (void)dealloc {
+    self.tintColor = nil;
+    
+    self.standbyLayer = nil;
+    
+    self.animationLayer = nil;
+    
+    self.standbyLayersArray = nil;
+    
+    self.animationLayerArray = nil;
 }
 
 #pragma mark - Public methods
@@ -93,6 +110,20 @@ static NSString* const kXHRotationAnimation = @"XHRotationAnimation";
 - (void)beginRefreshing {
     self.isRotating = YES;
     [self.standbyLayer addAnimation:[self createRotationAnimation] forKey:kXHRotationAnimation];
+    [self addOpacityAnimationForAnimationLayers];
+}
+
+- (void)addOpacityAnimationForAnimationLayers {
+    [self.animationLayerArray enumerateObjectsUsingBlock:^(CALayer *animationLayer, NSUInteger idx, BOOL *stop) {
+        CAAnimation *animation = [self createOpacityAnimationWithIndex:idx];
+        [animationLayer addAnimation:animation forKey:[NSString stringWithFormat:@"key %lu", (unsigned long)idx]];
+    }];
+}
+
+- (void)removeOpacityAnimationForAnimationLayers {
+    [self.animationLayerArray enumerateObjectsUsingBlock:^(CALayer *animationLayer, NSUInteger idx, BOOL *stop) {
+        [animationLayer removeAnimationForKey:[NSString stringWithFormat:@"key %lu", (unsigned long)idx]];
+    }];
 }
 
 - (void)endRefreshing {
@@ -103,6 +134,7 @@ static NSString* const kXHRotationAnimation = @"XHRotationAnimation";
         self.animationLayer.transform = CATransform3DIdentity;
         self.animationLayer.opacity = 1.0f;
         self.animationLayer.hidden = YES;
+        [self removeOpacityAnimationForAnimationLayers];
         self.standbyLayer.hidden = NO;
         self.timeOffset = 0.0;
     }];
@@ -114,7 +146,7 @@ static NSString* const kXHRotationAnimation = @"XHRotationAnimation";
     for (int i = 0; i < 12; i ++) {
         CALayer *layer = [self createLayer];
         
-        layer.transform = CATransform3DMakeRotation(M_PI / 6 * i, 0, 0, 1);
+        layer.transform = CATransform3DMakeRotation(M_PI / 6 * i + (self.refreshViewLayerType ? M_PI : 0), 0, 0, 1);
         
         layer.hidden = YES;
         
@@ -128,9 +160,6 @@ static NSString* const kXHRotationAnimation = @"XHRotationAnimation";
         CALayer *layer = [self createLayer];
         
         layer.transform = CATransform3DMakeRotation(M_PI / 6 * i, 0, 0, 1);
-        
-        CAAnimation *animation = [self createOpacityAnimationWithIndex:i];
-        [layer addAnimation:animation forKey:[NSString stringWithFormat:@"key %d", i]];
         
         [self.animationLayer addSublayer:layer];
         

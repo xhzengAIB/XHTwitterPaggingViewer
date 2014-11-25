@@ -8,11 +8,15 @@
 
 #import "XHTableViewController.h"
 
+#import "UIViewController+XHAppearViewController.h"
+
 @interface XHTableViewController ()
 
 @end
 
 @implementation XHTableViewController
+
+#pragma mark - DataSource
 
 - (void)loadDataSource {    
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -40,6 +44,20 @@
     });
 }
 
+#pragma mark - Life Cycle
+
+- (void)didAppear {
+    [self startPullDownRefreshing];
+}
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.refreshViewType = XHPullDownRefreshViewTypeActivityIndicator;
+    }
+    return self;
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
@@ -54,9 +72,13 @@
     // Do any additional setup after loading the view.
     if (!self.showPushDetail) {
         UIEdgeInsets edgeInsets = self.tableView.contentInset;
-        edgeInsets.top = ([XHFoundationCommon isIOS7] ? 64 : 0);
+        edgeInsets.top = 40;
         self.tableView.contentInset = edgeInsets;
         self.tableView.scrollIndicatorInsets = edgeInsets;
+        
+        CGRect tableViewFrame = self.tableView.frame;
+        tableViewFrame.size.height -= 64;
+        self.tableView.frame = tableViewFrame;
     }
 }
 
@@ -74,7 +96,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         cell.textLabel.numberOfLines = 0;
     }
-    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_avator%d", (indexPath.row % 3)]];
+    cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"icon_avator%ld", (indexPath.row % 3)]];
     cell.textLabel.text = self.dataSource[indexPath.row];
     
     return cell;

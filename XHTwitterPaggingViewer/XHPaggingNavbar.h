@@ -25,6 +25,8 @@
  */
 @property (nonatomic, assign) CGPoint contentOffset;
 
+@property (nonatomic, copy) void (^didChangedIndex)(NSInteger index);
+
 /**
  *  设置title集合数据源后，进行reload的方法
  */

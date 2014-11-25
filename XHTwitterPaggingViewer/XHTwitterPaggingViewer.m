@@ -10,6 +10,10 @@
 
 #import "XHPaggingNavbar.h"
 
+#import "XHCategoryMenuView.h"
+
+#import "UIViewController+XHAppearViewController.h"
+
 typedef NS_ENUM(NSInteger, XHSlideType) {
     XHSlideTypeLeft = 0,
     XHSlideTypeRight = 1,
@@ -33,6 +37,7 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
  */
 @property (nonatomic, assign) NSInteger currentPage;
 
+@property (nonatomic, strong) XHCategoryMenuView *categoryMenuView;
 
 @property (nonatomic, strong) UIViewController *leftViewController;
 
@@ -41,6 +46,10 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
 @end
 
 @implementation XHTwitterPaggingViewer
+
+#pragma mark - Action
+
+
 
 #pragma mark - DataSource
 
@@ -54,7 +63,9 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     
     CGFloat pageWidth = CGRectGetWidth(self.paggingScrollView.frame);
     
-    [self.paggingScrollView setContentOffset:CGPointMake(currentPage * pageWidth, 0) animated:animated];
+    CGPoint contentOffset = self.paggingScrollView.contentOffset;
+    contentOffset.x = currentPage * pageWidth;
+    [self.paggingScrollView setContentOffset:contentOffset animated:animated];
 }
 
 - (void)reloadData {
@@ -71,7 +82,7 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
         [self.paggingScrollView addSubview:viewController.view];
         [self addChildViewController:viewController];
     }];
-
+    
     [self.paggingScrollView setContentSize:CGSizeMake(CGRectGetWidth(self.view.bounds) * self.viewControllers.count, 0)];
     
     self.paggingNavbar.titles = [self.viewControllers valueForKey:@"title"];
@@ -112,8 +123,20 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     if (!_paggingNavbar) {
         _paggingNavbar = [[XHPaggingNavbar alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds) / 2.0, 44)];
         _paggingNavbar.backgroundColor = [UIColor clearColor];
+        
+        __weak typeof(self) weakSelf = self;
+        _paggingNavbar.didChangedIndex = ^(NSInteger index) {
+            [weakSelf setCurrentPage:index animated:YES];
+        };
     }
     return _paggingNavbar;
+}
+
+- (XHCategoryMenuView *)categoryMenuView {
+    if (!_categoryMenuView) {
+        _categoryMenuView = [[XHCategoryMenuView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), 40)];
+    }
+    return _categoryMenuView;
 }
 
 - (UIViewController *)getPageViewControllerAtIndex:(NSInteger)index {
@@ -130,6 +153,8 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     _currentPage = currentPage;
     
     self.paggingNavbar.currentPage = currentPage;
+    
+    [self.categoryMenuView setCurrentPage:currentPage animated:YES];
     
     [self setupScrollToTop];
     [self callBackChangedPage];
@@ -209,6 +234,9 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     
     [self setupTargetViewController:self.leftViewController withSlideType:XHSlideTypeLeft];
     [self setupTargetViewController:self.rightViewController withSlideType:XHSlideTypeRight];
+    
+    
+    [self.view addSubview:self.categoryMenuView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -286,6 +314,8 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
         UITableView *tableView = (UITableView *)[self subviewWithClass:[UITableView class] onView:[self getPageViewControllerAtIndex:i].view];
         if (tableView) {
             if (self.currentPage == i) {
+                UIViewController *viewController = self.viewControllers[self.currentPage];
+                [viewController performSelector:@selector(didAppear) withObject:nil afterDelay:2];
                 [tableView setScrollsToTop:YES];
             } else {
                 [tableView setScrollsToTop:NO];
@@ -321,6 +351,12 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     
     // 根据当前的x坐标和页宽度计算出当前页数
     self.currentPage = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+}
+
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    
 }
 
 @end

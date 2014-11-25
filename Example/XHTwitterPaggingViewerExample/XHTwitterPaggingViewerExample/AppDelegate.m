@@ -28,7 +28,7 @@
     
     NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithCapacity:7];
     
-    NSArray *titles = @[@"Home", @"Friend", @"曾宪华", @"News", @"Viewer", @"Framework", @"Pagging"];
+    NSArray *titles = @[@"最新", @"最热", @"段子", @"图片", @"GIF"];
     
     [titles enumerateObjectsUsingBlock:^(NSString *title, NSUInteger idx, BOOL *stop) {
         XHTableViewController *tableViewController = [[XHTableViewController alloc] init];
@@ -48,16 +48,7 @@
     
     [self.window makeKeyAndVisible];
     
-    [twitterPaggingViewer setCurrentPage:2 animated:NO];
-    
-    [self performSelector:@selector(setCurrentPage) withObject:nil afterDelay:3];
-
     return YES;
-}
-
-- (void)setCurrentPage {
-    [twitterPaggingViewer setCurrentPage:5 animated:YES];
-    [self performSelector:@selector(setCurrentPage) withObject:nil afterDelay:3];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

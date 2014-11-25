@@ -8,6 +8,8 @@
 
 #import "XHBaseTableViewController.h"
 
+#import "XHFoundationCommon.h"
+
 @interface XHBaseTableViewController ()
 
 /**
@@ -48,7 +50,6 @@
         _tableView = [[UITableView alloc] initWithFrame:tableViewFrame style:self.tableViewStyle];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        [_tableView setScrollsToTop:NO];
         
         _tableView.tableFooterView = [[UIView alloc] init];
         if (![self validateSeparatorInset]) {
@@ -57,6 +58,12 @@
                 backgroundView.backgroundColor = _tableView.backgroundColor;
                 _tableView.backgroundView = backgroundView;
             }
+        }
+        
+        if (self.tabBarController) {
+            UIEdgeInsets scrollIndicatorInsets = _tableView.scrollIndicatorInsets;
+            scrollIndicatorInsets.bottom -= CGRectGetHeight(self.tabBarController.tabBar.bounds);
+            _tableView.scrollIndicatorInsets = scrollIndicatorInsets;
         }
     }
     return _tableView;

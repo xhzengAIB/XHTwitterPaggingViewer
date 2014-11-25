@@ -8,6 +8,8 @@
 
 #import "XHPaggingNavbar.h"
 
+#import "XHPageControl.h"
+
 #define kXHiPad ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
 
 #define kXHLabelBaseTag 1000
@@ -17,7 +19,7 @@
 /**
  *  分页指示器
  */
-@property (nonatomic, strong) UIPageControl *pageControl;
+@property (nonatomic, strong) XHPageControl *pageControl;
 
 /**
  *  title label 集合
@@ -53,7 +55,7 @@
         titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         titleLabel.font = [UIFont boldSystemFontOfSize:17];
         titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.textColor = [UIColor whiteColor];
+        titleLabel.textColor = [UIColor colorWithRed:0.090 green:0.574 blue:1.000 alpha:1.000];
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.text = title;
         titleLabel.frame = titleLabelFrame;
@@ -65,6 +67,12 @@
     }];
     
     self.pageControl.numberOfPages = self.titles.count;
+}
+
+- (void)pageControlValueChanged:(XHPageControl *)pageControl {
+    if (self.didChangedIndex) {
+        self.didChangedIndex(pageControl.currentPage);
+    }
 }
 
 #pragma mark - Propertys
@@ -101,15 +109,16 @@
     }];
 }
 
-- (UIPageControl *)pageControl {
+- (XHPageControl *)pageControl {
     if (!_pageControl) {
-        _pageControl = [[UIPageControl alloc] init];
+        _pageControl = [[XHPageControl alloc] init];
         _pageControl.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-        _pageControl.frame = (CGRect){0, 35, CGRectGetWidth(self.bounds), 0};
+        _pageControl.frame = (CGRect){0, 25, CGRectGetWidth(self.bounds), 20};
+        [_pageControl addTarget:self action:@selector(pageControlValueChanged:) forControlEvents:UIControlEventValueChanged];
         _pageControl.hidesForSinglePage = YES;
         _pageControl.currentPage = self.currentPage;
-        _pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
-        _pageControl.pageIndicatorTintColor = [UIColor colorWithWhite:0.799 alpha:1.000];
+        [_pageControl setThumbImage:[UIImage imageNamed:@"u92"]];
+        [_pageControl setSelectedThumbImage:[UIImage imageNamed:@"u94"]];
     }
     return _pageControl;
 }

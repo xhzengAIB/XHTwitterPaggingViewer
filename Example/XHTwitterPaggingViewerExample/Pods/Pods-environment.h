@@ -8,7 +8,7 @@
 
 // XHRefreshControl
 #define COCOAPODS_POD_AVAILABLE_XHRefreshControl
-#define COCOAPODS_VERSION_MAJOR_XHRefreshControl 0
-#define COCOAPODS_VERSION_MINOR_XHRefreshControl 2
+#define COCOAPODS_VERSION_MAJOR_XHRefreshControl 2
+#define COCOAPODS_VERSION_MINOR_XHRefreshControl 3
 #define COCOAPODS_VERSION_PATCH_XHRefreshControl 0
 

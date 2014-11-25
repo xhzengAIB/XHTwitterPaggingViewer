@@ -1,1 +1,1 @@
-../../XHRefreshControl/RefreshControl/XHRefreshControl.h
+../../XHRefreshControl/RefreshControl/Manager/XHRefreshControl.h

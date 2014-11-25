@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "XHFoundationCommon.h"
-
 @interface XHBaseTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 /**

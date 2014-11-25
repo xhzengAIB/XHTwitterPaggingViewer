@@ -10,10 +10,15 @@
 
 @implementation XHCircleView
 
+- (void)setOffsetY:(CGFloat)offsetY {
+    _offsetY = offsetY;
+    [self setNeedsDisplay];
+}
+
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        _heightBeginToRefresh = 50;
+        _heightBeginToRefresh = 40;
         _offsetY = 0;
         
         self.backgroundColor = [UIColor clearColor];
@@ -42,7 +47,7 @@
     CGContextSetLineWidth(context, 1.f);
     
     static CGFloat radius = 9;
-    if (_isRefreshViewOnTableView) {
+    if (self.refreshViewLayerType) {
         static CGFloat startAngle = M_PI / 2;
         CGFloat endAngle = (ABS(_offsetY) / _heightBeginToRefresh) * (M_PI * 19 / 10) + startAngle;
         CGContextAddArc(context, CGRectGetWidth(self.frame) / 2, CGRectGetHeight(self.frame) / 2, radius, startAngle, endAngle, 0);
