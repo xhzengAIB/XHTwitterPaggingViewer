@@ -94,7 +94,7 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
 - (UIView *)centerContainerView {
     if (!_centerContainerView) {
         _centerContainerView = [[UIView alloc] initWithFrame:self.view.bounds];
-        _centerContainerView.backgroundColor = [UIColor whiteColor];
+        _centerContainerView.backgroundColor = self.view.backgroundColor;
         
         [_centerContainerView addSubview:self.paggingScrollView];
         [self.paggingScrollView.panGestureRecognizer addTarget:self action:@selector(panGestureRecognizerHandle:)];
