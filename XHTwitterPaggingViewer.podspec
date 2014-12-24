@@ -8,6 +8,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/xhzengAIB/TwitterPaggingViewer.git", :tag => "v0.5" }
   s.frameworks   = 'Foundation', 'CoreGraphics', 'UIKit'
   s.platform     = :ios, '6.0'
-  s.source_files = 'XHTwitterPaggingViewer/*.{h,m}'
+  s.source_files = 'XHTwitterPaggingViewer/*/*.{h,m}'
+  s.source_resources = 'XHTwitterPaggingViewer/Assets/*'
   s.requires_arc = true
 end
