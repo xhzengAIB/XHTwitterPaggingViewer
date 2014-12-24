@@ -8,13 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		51920567B2C7409CB6CDC785 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F30D8D4EEFAD4E96A5E642A7 /* libPods.a */; };
-		7D630895199CBE7B008A3771 /* XHPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D630894199CBE7B008A3771 /* XHPageControl.m */; };
-		7D630898199CC09F008A3771 /* u92@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D630896199CC09F008A3771 /* u92@2x.png */; };
-		7D630899199CC09F008A3771 /* u94@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7D630897199CC09F008A3771 /* u94@2x.png */; };
-		7D63089C199CC41F008A3771 /* XHCategoryMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D63089B199CC41F008A3771 /* XHCategoryMenuView.m */; };
-		7D63089F199CF1A8008A3771 /* UIViewController+XHAppearViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D63089E199CF1A8008A3771 /* UIViewController+XHAppearViewController.m */; };
-		ABCFFB6A1963852800E7E72C /* XHPaggingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCFFB671963852800E7E72C /* XHPaggingNavbar.m */; };
-		ABCFFB6B1963852800E7E72C /* XHTwitterPaggingViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCFFB691963852800E7E72C /* XHTwitterPaggingViewer.m */; };
 		ABFA6824195510C800335010 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFA6823195510C800335010 /* Foundation.framework */; };
 		ABFA6826195510C800335010 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFA6825195510C800335010 /* CoreGraphics.framework */; };
 		ABFA6828195510C800335010 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFA6827195510C800335010 /* UIKit.framework */; };
@@ -28,6 +21,11 @@
 		ABFA6847195510C800335010 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABFA6845195510C800335010 /* InfoPlist.strings */; };
 		ABFA6849195510C800335010 /* XHTwitterPaggingViewerExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFA6848195510C800335010 /* XHTwitterPaggingViewerExampleTests.m */; };
 		ABFA685A195510F900335010 /* XHTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFA6857195510F900335010 /* XHTableViewController.m */; };
+		F7F637DA1A4AB51C00FAA61A /* XHTwitterPaggingViewer.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F637CF1A4AB51C00FAA61A /* XHTwitterPaggingViewer.m */; };
+		F7F637DB1A4AB51C00FAA61A /* thumbnail_normal@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7F637D11A4AB51C00FAA61A /* thumbnail_normal@2x.png */; };
+		F7F637DC1A4AB51C00FAA61A /* thumbnail_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7F637D21A4AB51C00FAA61A /* thumbnail_selected@2x.png */; };
+		F7F637DE1A4AB51C00FAA61A /* XHPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F637D61A4AB51C00FAA61A /* XHPageControl.m */; };
+		F7F637DF1A4AB51C00FAA61A /* XHPaggingNavbar.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F637D81A4AB51C00FAA61A /* XHPaggingNavbar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,18 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7D630893199CBE7B008A3771 /* XHPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHPageControl.h; sourceTree = "<group>"; };
-		7D630894199CBE7B008A3771 /* XHPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHPageControl.m; sourceTree = "<group>"; };
-		7D630896199CC09F008A3771 /* u92@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "u92@2x.png"; sourceTree = "<group>"; };
-		7D630897199CC09F008A3771 /* u94@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "u94@2x.png"; sourceTree = "<group>"; };
-		7D63089A199CC41F008A3771 /* XHCategoryMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHCategoryMenuView.h; sourceTree = "<group>"; };
-		7D63089B199CC41F008A3771 /* XHCategoryMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHCategoryMenuView.m; sourceTree = "<group>"; };
-		7D63089D199CF1A8008A3771 /* UIViewController+XHAppearViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+XHAppearViewController.h"; sourceTree = "<group>"; };
-		7D63089E199CF1A8008A3771 /* UIViewController+XHAppearViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+XHAppearViewController.m"; sourceTree = "<group>"; };
-		ABCFFB661963852800E7E72C /* XHPaggingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHPaggingNavbar.h; sourceTree = "<group>"; };
-		ABCFFB671963852800E7E72C /* XHPaggingNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHPaggingNavbar.m; sourceTree = "<group>"; };
-		ABCFFB681963852800E7E72C /* XHTwitterPaggingViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTwitterPaggingViewer.h; sourceTree = "<group>"; };
-		ABCFFB691963852800E7E72C /* XHTwitterPaggingViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTwitterPaggingViewer.m; sourceTree = "<group>"; };
 		ABFA6820195510C800335010 /* XHTwitterPaggingViewerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XHTwitterPaggingViewerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFA6823195510C800335010 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		ABFA6825195510C800335010 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -73,6 +59,14 @@
 		ABFA6857195510F900335010 /* XHTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTableViewController.m; sourceTree = "<group>"; };
 		BEB5BA9A4AFB4FCC91064867 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F30D8D4EEFAD4E96A5E642A7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7F637CE1A4AB51C00FAA61A /* XHTwitterPaggingViewer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHTwitterPaggingViewer.h; sourceTree = "<group>"; };
+		F7F637CF1A4AB51C00FAA61A /* XHTwitterPaggingViewer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHTwitterPaggingViewer.m; sourceTree = "<group>"; };
+		F7F637D11A4AB51C00FAA61A /* thumbnail_normal@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail_normal@2x.png"; sourceTree = "<group>"; };
+		F7F637D21A4AB51C00FAA61A /* thumbnail_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnail_selected@2x.png"; sourceTree = "<group>"; };
+		F7F637D51A4AB51C00FAA61A /* XHPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHPageControl.h; sourceTree = "<group>"; };
+		F7F637D61A4AB51C00FAA61A /* XHPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHPageControl.m; sourceTree = "<group>"; };
+		F7F637D71A4AB51C00FAA61A /* XHPaggingNavbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHPaggingNavbar.h; sourceTree = "<group>"; };
+		F7F637D81A4AB51C00FAA61A /* XHPaggingNavbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHPaggingNavbar.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,30 +94,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		ABCFFB651963852800E7E72C /* XHTwitterPaggingViewer */ = {
-			isa = PBXGroup;
-			children = (
-				ABCFFB661963852800E7E72C /* XHPaggingNavbar.h */,
-				ABCFFB671963852800E7E72C /* XHPaggingNavbar.m */,
-				ABCFFB681963852800E7E72C /* XHTwitterPaggingViewer.h */,
-				ABCFFB691963852800E7E72C /* XHTwitterPaggingViewer.m */,
-				7D630893199CBE7B008A3771 /* XHPageControl.h */,
-				7D630894199CBE7B008A3771 /* XHPageControl.m */,
-				7D63089A199CC41F008A3771 /* XHCategoryMenuView.h */,
-				7D63089B199CC41F008A3771 /* XHCategoryMenuView.m */,
-				7D63089D199CF1A8008A3771 /* UIViewController+XHAppearViewController.h */,
-				7D63089E199CF1A8008A3771 /* UIViewController+XHAppearViewController.m */,
-				7D630896199CC09F008A3771 /* u92@2x.png */,
-				7D630897199CC09F008A3771 /* u94@2x.png */,
-			);
-			name = XHTwitterPaggingViewer;
-			path = ../../XHTwitterPaggingViewer;
-			sourceTree = "<group>";
-		};
 		ABFA6817195510C800335010 = {
 			isa = PBXGroup;
 			children = (
-				ABCFFB651963852800E7E72C /* XHTwitterPaggingViewer */,
+				F7F637C91A4AB51C00FAA61A /* XHTwitterPaggingViewer */,
 				ABFA6829195510C800335010 /* XHTwitterPaggingViewerExample */,
 				ABFA6842195510C800335010 /* XHTwitterPaggingViewerExampleTests */,
 				ABFA6822195510C800335010 /* Frameworks */,
@@ -193,6 +167,38 @@
 				ABFA6845195510C800335010 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F7F637C91A4AB51C00FAA61A /* XHTwitterPaggingViewer */ = {
+			isa = PBXGroup;
+			children = (
+				F7F637D01A4AB51C00FAA61A /* Views */,
+				F7F637CD1A4AB51C00FAA61A /* Controllers */,
+			);
+			name = XHTwitterPaggingViewer;
+			path = ../../XHTwitterPaggingViewer;
+			sourceTree = "<group>";
+		};
+		F7F637CD1A4AB51C00FAA61A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F7F637CE1A4AB51C00FAA61A /* XHTwitterPaggingViewer.h */,
+				F7F637CF1A4AB51C00FAA61A /* XHTwitterPaggingViewer.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F7F637D01A4AB51C00FAA61A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F7F637D71A4AB51C00FAA61A /* XHPaggingNavbar.h */,
+				F7F637D81A4AB51C00FAA61A /* XHPaggingNavbar.m */,
+				F7F637D51A4AB51C00FAA61A /* XHPageControl.h */,
+				F7F637D61A4AB51C00FAA61A /* XHPageControl.m */,
+				F7F637D11A4AB51C00FAA61A /* thumbnail_normal@2x.png */,
+				F7F637D21A4AB51C00FAA61A /* thumbnail_selected@2x.png */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,8 +281,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D630898199CC09F008A3771 /* u92@2x.png in Resources */,
-				7D630899199CC09F008A3771 /* u94@2x.png in Resources */,
+				F7F637DB1A4AB51C00FAA61A /* thumbnail_normal@2x.png in Resources */,
+				F7F637DC1A4AB51C00FAA61A /* thumbnail_selected@2x.png in Resources */,
 				ABFA682E195510C800335010 /* InfoPlist.strings in Resources */,
 				ABFA6836195510C800335010 /* Images.xcassets in Resources */,
 			);
@@ -330,14 +336,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D630895199CBE7B008A3771 /* XHPageControl.m in Sources */,
-				7D63089C199CC41F008A3771 /* XHCategoryMenuView.m in Sources */,
+				F7F637DE1A4AB51C00FAA61A /* XHPageControl.m in Sources */,
+				F7F637DF1A4AB51C00FAA61A /* XHPaggingNavbar.m in Sources */,
 				ABFA6834195510C800335010 /* AppDelegate.m in Sources */,
+				F7F637DA1A4AB51C00FAA61A /* XHTwitterPaggingViewer.m in Sources */,
 				ABFA685A195510F900335010 /* XHTableViewController.m in Sources */,
-				7D63089F199CF1A8008A3771 /* UIViewController+XHAppearViewController.m in Sources */,
 				ABFA6830195510C800335010 /* main.m in Sources */,
-				ABCFFB6B1963852800E7E72C /* XHTwitterPaggingViewer.m in Sources */,
-				ABCFFB6A1963852800E7E72C /* XHPaggingNavbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

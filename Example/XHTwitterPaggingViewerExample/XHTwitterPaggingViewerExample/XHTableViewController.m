@@ -8,8 +8,6 @@
 
 #import "XHTableViewController.h"
 
-#import "UIViewController+XHAppearViewController.h"
-
 @interface XHTableViewController ()
 
 @end
@@ -71,11 +69,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     if (!self.showPushDetail) {
-        UIEdgeInsets edgeInsets = self.tableView.contentInset;
-        edgeInsets.top = 40;
-        self.tableView.contentInset = edgeInsets;
-        self.tableView.scrollIndicatorInsets = edgeInsets;
-        
         CGRect tableViewFrame = self.tableView.frame;
         tableViewFrame.size.height -= 64;
         self.tableView.frame = tableViewFrame;

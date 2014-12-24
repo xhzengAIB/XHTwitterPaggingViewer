@@ -53,7 +53,7 @@
         }
         titleLabel.hidden = NO;
         titleLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-        titleLabel.font = [UIFont boldSystemFontOfSize:17];
+        titleLabel.font = [[UINavigationBar appearance].titleTextAttributes objectForKey:NSFontAttributeName];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.textColor = [UINavigationBar appearance].tintColor;
         titleLabel.backgroundColor = [UIColor clearColor];
@@ -117,8 +117,8 @@
         [_pageControl addTarget:self action:@selector(pageControlValueChanged:) forControlEvents:UIControlEventValueChanged];
         _pageControl.hidesForSinglePage = YES;
         _pageControl.currentPage = self.currentPage;
-        [_pageControl setThumbImage:[UIImage imageNamed:@"u92"]];
-        [_pageControl setSelectedThumbImage:[UIImage imageNamed:@"u94"]];
+        [_pageControl setThumbImage:[UIImage imageNamed:@"thumbnail_normal"]];
+        [_pageControl setSelectedThumbImage:[UIImage imageNamed:@"thumbnail_selected"]];
     }
     return _pageControl;
 }

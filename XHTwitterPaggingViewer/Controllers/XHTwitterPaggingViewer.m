@@ -10,10 +10,6 @@
 
 #import "XHPaggingNavbar.h"
 
-#import "XHCategoryMenuView.h"
-
-#import "UIViewController+XHAppearViewController.h"
-
 typedef NS_ENUM(NSInteger, XHSlideType) {
     XHSlideTypeLeft = 0,
     XHSlideTypeRight = 1,
@@ -37,8 +33,6 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
  */
 @property (nonatomic, assign) NSInteger currentPage;
 @property (nonatomic, assign) NSInteger lastPage;
-
-@property (nonatomic, strong) XHCategoryMenuView *categoryMenuView;
 
 @property (nonatomic, strong) UIViewController *leftViewController;
 
@@ -78,6 +72,7 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     
     [self.viewControllers enumerateObjectsUsingBlock:^(UIViewController *viewController, NSUInteger idx, BOOL *stop) {
         CGRect contentViewFrame = viewController.view.bounds;
+        contentViewFrame.origin.y = 0;
         contentViewFrame.origin.x = idx * CGRectGetWidth(self.view.bounds);
         viewController.view.frame = contentViewFrame;
         [self.paggingScrollView addSubview:viewController.view];
@@ -133,13 +128,6 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     return _paggingNavbar;
 }
 
-- (XHCategoryMenuView *)categoryMenuView {
-    if (!_categoryMenuView) {
-        _categoryMenuView = [[XHCategoryMenuView alloc] initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), 40)];
-    }
-    return _categoryMenuView;
-}
-
 - (UIViewController *)getPageViewControllerAtIndex:(NSInteger)index {
     if (index < self.viewControllers.count) {
         return self.viewControllers[index];
@@ -155,9 +143,7 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     _currentPage = currentPage;
     
     self.paggingNavbar.currentPage = currentPage;
-    
-    [self.categoryMenuView setCurrentPage:currentPage animated:YES];
-    
+        
     [self setupScrollToTop];
     [self callBackChangedPage];
 }
@@ -220,14 +206,14 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self setupNavigationBar];
+    [self setupNavigationBarForTitleView];
     
     [self setupViews];
     
     [self reloadData];
 }
 
-- (void)setupNavigationBar {   
+- (void)setupNavigationBarForTitleView {
     self.navigationItem.titleView = self.paggingNavbar;
 }
 
@@ -236,9 +222,6 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     
     [self setupTargetViewController:self.leftViewController withSlideType:XHSlideTypeLeft];
     [self setupTargetViewController:self.rightViewController withSlideType:XHSlideTypeRight];
-    
-    
-    [self.view addSubview:self.categoryMenuView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -260,6 +243,7 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
 #pragma mark - PanGesture Handle Method
 
 - (void)panGestureRecognizerHandle:(UIPanGestureRecognizer *)panGestureRecognizer {
+    /*
     CGPoint contentOffset = self.paggingScrollView.contentOffset;
     
     CGSize contentSize = self.paggingScrollView.contentSize;
@@ -271,17 +255,17 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
             
             break;
         case UIGestureRecognizerStateChanged: {
-//            CGPoint translationPoint = [panGestureRecognizer translationInView:panGestureRecognizer.view];
+            CGPoint translationPoint = [panGestureRecognizer translationInView:panGestureRecognizer.view];
             if (contentOffset.x <= 0) {
                 // 滑动到最左边
                 
-//                CGRect centerContainerViewFrame = self.centerContainerView.frame;
-//                centerContainerViewFrame.origin.x += translationPoint.x;
-//                self.centerContainerView.frame = centerContainerViewFrame;
-//                
-//                CGRect leftMenuViewFrame = self.leftViewController.view.frame;
-//                leftMenuViewFrame.origin.x += translationPoint.x;
-//                self.leftViewController.view.frame = leftMenuViewFrame;
+                CGRect centerContainerViewFrame = self.centerContainerView.frame;
+                centerContainerViewFrame.origin.x += translationPoint.x;
+                self.centerContainerView.frame = centerContainerViewFrame;
+                
+                CGRect leftMenuViewFrame = self.leftViewController.view.frame;
+                leftMenuViewFrame.origin.x += translationPoint.x;
+                self.leftViewController.view.frame = leftMenuViewFrame;
                 
                 [panGestureRecognizer setTranslation:CGPointZero inView:panGestureRecognizer.view];
             } else if (contentOffset.x >= contentSize.width - baseWidth) {
@@ -299,6 +283,7 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
         default:
             break;
     }
+    */
 }
 
 #pragma mark - Block Call Back Method
@@ -324,8 +309,6 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
         UITableView *tableView = (UITableView *)[self subviewWithClass:[UITableView class] onView:[self getPageViewControllerAtIndex:i].view];
         if (tableView) {
             if (self.currentPage == i) {
-                UIViewController *viewController = self.viewControllers[self.currentPage];
-                [viewController performSelector:@selector(didAppear) withObject:nil afterDelay:2];
                 [tableView setScrollsToTop:YES];
             } else {
                 [tableView setScrollsToTop:NO];
