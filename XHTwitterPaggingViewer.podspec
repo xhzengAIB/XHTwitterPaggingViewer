@@ -9,6 +9,6 @@ Pod::Spec.new do |s|
   s.frameworks   = 'Foundation', 'CoreGraphics', 'UIKit'
   s.platform     = :ios, '6.0'
   s.source_files = 'XHTwitterPaggingViewer/*/*.{h,m}'
-  s.source_resources = 'XHTwitterPaggingViewer/Assets'
+  s.resources    = 'XHTwitterPaggingViewer/Assets/*'
   s.requires_arc = true
 end
