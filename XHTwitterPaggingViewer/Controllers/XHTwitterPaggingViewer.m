@@ -71,12 +71,14 @@ typedef NS_ENUM(NSInteger, XHSlideType) {
     [self.paggingScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     
     [self.viewControllers enumerateObjectsUsingBlock:^(UIViewController *viewController, NSUInteger idx, BOOL *stop) {
+        [self addChildViewController:viewController];
+        [self.paggingScrollView addSubview:viewController.view];
         CGRect contentViewFrame = viewController.view.bounds;
         contentViewFrame.origin.y = 0;
         contentViewFrame.origin.x = idx * CGRectGetWidth(self.view.bounds);
+        contentViewFrame.size.width = CGRectGetWidth(self.view.bounds);
+        contentViewFrame.size.height = CGRectGetHeight(self.view.bounds);
         viewController.view.frame = contentViewFrame;
-        [self.paggingScrollView addSubview:viewController.view];
-        [self addChildViewController:viewController];
     }];
     
     [self.paggingScrollView setContentSize:CGSizeMake(CGRectGetWidth(self.view.bounds) * self.viewControllers.count, 0)];
