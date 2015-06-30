@@ -5,6 +5,8 @@ TwitterPaggingViewer
 
 A twitter like navigation bar, page viewer.
 
+有某些业务中，并不是在NavigationController的rootViewController上使用，那么该怎么去改进这个库去适应呢？
+还在考虑解决方案中...........
 
 ## 组件要求                                        Requirements
 
